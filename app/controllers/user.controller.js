@@ -66,8 +66,8 @@ UserController.prototype.adminConfirmMail = function(req, res) {
       var transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
-          user: 'olarewajuore@gmail.com',
-          pass: 'Wuraorjade'
+          user: 'sls@gmail.com',
+          pass: 'skjfmlm'
         }
       });
       var mailOptions = {
