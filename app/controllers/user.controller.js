@@ -66,8 +66,8 @@ UserController.prototype.adminConfirmMail = function(req, res) {
       var transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
-          user: 'ghenghen@gmail.com',
-          pass: '12344'
+          user: 'olarewajuore@gmail.com',
+          pass: 'Wuraorjade'
         }
       });
       var mailOptions = {
@@ -76,7 +76,7 @@ UserController.prototype.adminConfirmMail = function(req, res) {
         subject: 'Confirm registration of new physio',
         text: 'There is a new physio to be confirmed',
         html: '<b> Hello ' + user.firstname + ',\n A new user has requested to be a physiotherapist \n' +
-          'Click <a href="http://roots-event-manager.herokuapp.com"> here</a> to confirm user details</b>'
+          'Click <a href="https://www.youtube.com/watch?v=wulMdCsgDBA"> here</a> to confirm user details</b>'
       };
 
       transporter.sendMail(mailOptions, function(error, info) {
@@ -168,7 +168,7 @@ UserController.prototype.decodeUser = function(req, res) {
 };
 
 UserController.prototype.verifyToken = function(req, res, next) {
-  var token = req.body.token || req.query.token || req.headers['x-access-token'];
+  var token = req.body.token || req.query.token || req.body.newPatient.token || req.headers['x-access-token'];
 
   if (token) {
     jwt.verify(token, config.secret, function(err, decoded) {
