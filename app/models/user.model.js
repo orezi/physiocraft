@@ -33,6 +33,31 @@ var userSchema = new Schema({
     type: Boolean,
     required: true,
     default: false
+  },
+  operation: {
+    type: Boolean,
+    required: true,
+    default: false
+  },
+  finance: {
+    type: Boolean,
+    required: true,
+    default: false
+  },
+  marketing: {
+    type: Boolean,
+    required: true,
+    default: false
+  },
+  e_media: {
+    type: Boolean,
+    required: true,
+    default: false
+  },
+  associate: {
+    type: Boolean,
+    required: true,
+    default: false
   }
 });
 

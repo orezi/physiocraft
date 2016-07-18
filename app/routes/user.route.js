@@ -28,6 +28,21 @@ module.exports = function(app) {
     .get(user.verifyToken, user.getCurrentUser)
     .delete(user.verifyToken, user.deleteUser);
 
+  router.route('/user/:id/operation')
+    .put(user.verifyToken, user.makeOperation);
+
+  router.route('/user/:id/finance')
+    .put(user.verifyToken, user.makeFinance);
+
+  router.route('/user/:id/marketing')
+    .put(user.verifyToken, user.makeMarketing);
+
+  router.route('/user/:id/e-media')
+    .put(user.verifyToken, user.makeEMedia);
+
+  router.route('/user/:id/associate')
+    .put(user.verifyToken, user.makeAssociate);
+
   app.use('/api', router);
   // frontend routes =========================================================
 };

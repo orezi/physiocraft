@@ -92,14 +92,14 @@ UserController.prototype.adminConfirmMail = function(req, res) {
 
 UserController.prototype.confirmUser = function(req, res) {
   var pendingUserId = req.params.user_id;
-  User.findByIdAndUpdate(pendingUserId, { $set: { verified: true }}, function(err, user) {
+  User.findByIdAndUpdate(pendingUserId, { $set: { verified: true } }, function(err, user) {
     if (err) return err;
     res.send({
       success: true,
       message: "User verified",
       user: user
     });
-  });   
+  });
 };
 
 UserController.prototype.deleteAll = function(req, res) {
@@ -237,6 +237,121 @@ UserController.prototype.getCurrentUser = function(req, res) {
     } else {
       res.json(user);
     }
+  });
+};
+
+UserController.prototype.makeOperation = function(req, res) {
+  User.findById(req.decoded._doc._id, function(err, user) {
+    if (user.admin == false) {
+      return res.json({
+        success: false,
+        message: "not authorized"
+      });
+    }
+    User.findByIdAndUpdate(req.params.id, {
+      $set: {
+        operation: true,
+        finance: false,
+        marketing: false,
+        e_media: false,
+        associate: false
+      }
+    }, function(err, user) {
+      if (err) return (err);
+      res.send(user);
+    });
+  });
+};
+
+UserController.prototype.makeFinance = function(req, res) {
+  User.findById(req.decoded._doc._id, function(err, user) {
+    if (user.admin == false) {
+      return res.json({
+        success: false,
+        message: "not authorized"
+      });
+    }
+    User.findByIdAndUpdate(req.params.id, {
+      $set: {
+        finance: true,
+        operation: false,
+        marketing: false,
+        e_media: false,
+        associate: false
+      }
+    }, function(err, user) {
+      if (err) return (err);
+      res.send(user);
+    });
+  });
+};
+
+UserController.prototype.makeMarketing = function(req, res) {
+  User.findById(req.decoded._doc._id, function(err, user) {
+    if (user.admin == false) {
+      return res.json({
+        success: false,
+        message: "not authorized"
+      });
+    }
+    User.findByIdAndUpdate(req.params.id, {
+      $set: {
+        marketing: true,
+        finance: false,
+        operation: false,
+        e_media: false,
+        associate: false
+      }
+    }, function(err, user) {
+      if (err) return (err);
+      res.send(user);
+    });
+  });
+};
+
+UserController.prototype.makeEMedia = function(req, res) {
+  User.findById(req.decoded._doc._id, function(err, user) {
+    if (user.admin == false) {
+      return res.json({
+        success: false,
+        message: "not authorized"
+      });
+    }
+    User.findByIdAndUpdate(req.params.id, {
+      $set: {
+        e_media: true,
+        finance: false,
+        operation: false,
+        marketing: false,
+        associate: false
+      }
+    }, function(err, user) {
+      if (err) return (err);
+      res.send(user);
+    });
+  });
+};
+
+UserController.prototype.makeAssociate = function(req, res) {
+  User.findById(req.decoded._doc._id, function(err, user) {
+    if (user.admin == false) {
+      return res.json({
+        success: false,
+        message: "not authorized"
+      });
+    }
+    User.findByIdAndUpdate(req.params.id, {
+      $set: {
+        associate: true,
+        finance: false,
+        operation: false,
+        marketing: false,
+        e_media: false,
+      }
+    }, function(err, user) {
+      if (err) return (err);
+      res.send(user);
+    });
   });
 };
 
