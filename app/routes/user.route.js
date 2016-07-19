@@ -43,6 +43,9 @@ module.exports = function(app) {
   router.route('/user/:id/associate')
     .put(user.verifyToken, user.makeAssociate);
 
+  router.route('/user/:id/founder')
+    .put(user.verifyToken, user.makeFounder);
+
   app.use('/api', router);
   // frontend routes =========================================================
 };

@@ -248,18 +248,20 @@ UserController.prototype.makeOperation = function(req, res) {
         message: "not authorized"
       });
     }
-    User.findByIdAndUpdate(req.params.id, {
-      $set: {
-        operation: true,
-        finance: false,
-        marketing: false,
-        e_media: false,
-        associate: false
-      }
-    }, function(err, user) {
-      if (err) return (err);
-      res.send(user);
-    });
+    else {
+      User.findByIdAndUpdate(req.params.id, {
+        $set: {
+          operation: true,
+          finance: false,
+          marketing: false,
+          e_media: false,
+          associate: false
+        }
+      }, function(err, user) {
+        if (err) return (err);
+        res.send(user);
+      });
+    }
   });
 };
 
@@ -271,18 +273,20 @@ UserController.prototype.makeFinance = function(req, res) {
         message: "not authorized"
       });
     }
-    User.findByIdAndUpdate(req.params.id, {
-      $set: {
-        finance: true,
-        operation: false,
-        marketing: false,
-        e_media: false,
-        associate: false
-      }
-    }, function(err, user) {
-      if (err) return (err);
-      res.send(user);
-    });
+    else {
+      User.findByIdAndUpdate(req.params.id, {
+        $set: {
+          finance: true,
+          operation: false,
+          marketing: false,
+          e_media: false,
+          associate: false
+        }
+      }, function(err, user) {
+        if (err) return (err);
+        res.send(user);
+      });
+    }
   });
 };
 
@@ -294,18 +298,20 @@ UserController.prototype.makeMarketing = function(req, res) {
         message: "not authorized"
       });
     }
-    User.findByIdAndUpdate(req.params.id, {
-      $set: {
-        marketing: true,
-        finance: false,
-        operation: false,
-        e_media: false,
-        associate: false
-      }
-    }, function(err, user) {
-      if (err) return (err);
-      res.send(user);
-    });
+    else {
+      User.findByIdAndUpdate(req.params.id, {
+        $set: {
+          marketing: true,
+          finance: false,
+          operation: false,
+          e_media: false,
+          associate: false
+        }
+      }, function(err, user) {
+        if (err) return (err);
+        res.send(user);
+      });
+    }
   });
 };
 
@@ -317,18 +323,20 @@ UserController.prototype.makeEMedia = function(req, res) {
         message: "not authorized"
       });
     }
-    User.findByIdAndUpdate(req.params.id, {
-      $set: {
-        e_media: true,
-        finance: false,
-        operation: false,
-        marketing: false,
-        associate: false
-      }
-    }, function(err, user) {
-      if (err) return (err);
-      res.send(user);
-    });
+    else {
+      User.findByIdAndUpdate(req.params.id, {
+        $set: {
+          e_media: true,
+          finance: false,
+          operation: false,
+          marketing: false,
+          associate: false
+        }
+      }, function(err, user) {
+        if (err) return (err);
+        res.send(user);
+      });
+    }
   });
 };
 
@@ -340,18 +348,45 @@ UserController.prototype.makeAssociate = function(req, res) {
         message: "not authorized"
       });
     }
-    User.findByIdAndUpdate(req.params.id, {
-      $set: {
-        associate: true,
-        finance: false,
-        operation: false,
-        marketing: false,
-        e_media: false,
-      }
-    }, function(err, user) {
-      if (err) return (err);
-      res.send(user);
-    });
+    else {
+      User.findByIdAndUpdate(req.params.id, {
+        $set: {
+          associate: true,
+          finance: false,
+          operation: false,
+          marketing: false,
+          e_media: false,
+        }
+      }, function(err, user) {
+        if (err) return (err);
+        res.send(user);
+      });
+    }
+  });
+};
+
+UserController.prototype.makeFounder = function(req, res) {
+  User.findById(req.decoded._doc._id, function(err, user) {
+    if (user.admin == false) {
+      return res.json({
+        success: false,
+        message: "not authorized"
+      });
+    }
+    else {
+      User.findByIdAndUpdate(req.params.id, {
+        $set: {
+          associate: true,
+          finance: true,
+          operation: true,
+          marketing: true,
+          e_media: true,
+        }
+      }, function(err, user) {
+        if (err) return (err);
+        res.send(user);
+      });
+    }
   });
 };
 
