@@ -25,7 +25,7 @@ UserController.prototype.getUsers = function(req, res) {
 };
 
 UserController.prototype.createUser = function(req, res) {
-  if (!req.body.firstname || !req.body.lastname || !req.body.email || !req.body.password || !req.body.admin || !req.body.verified) {
+  if (!req.body.firstname || !req.body.lastname || !req.body.email || !req.body.password) {
     return res.status(422).send({
       success: false,
       message: 'Check parameters!'
@@ -66,8 +66,8 @@ UserController.prototype.adminConfirmMail = function(req, res) {
       var transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
-          user: 'sls@gmail.com',
-          pass: 'skjfmlm'
+          user: 'sdkd@gmail.com',
+          pass: 'dsklds'
         }
       });
       var mailOptions = {

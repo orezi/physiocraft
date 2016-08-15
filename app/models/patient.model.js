@@ -1,10 +1,10 @@
-// app/models/user.model.js
+// app/models/patient.model.js
 // grab the mongoose module
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs');
 var Schema = mongoose.Schema;
 
-// define our user model
+// define our patient model
 // module.exports allows us to pass this to other files when it is called
 var patientSchema = new Schema({
   firstname: {
