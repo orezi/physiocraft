@@ -1,0 +1,84 @@
+body.md-default-theme, body{
+	background-color: transparent;
+}
+html {
+	background: url(../img/physio.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.big-div{
+  display: flex;
+  justify-content: center;
+}
+.title{
+	margin-top: 50px;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	font-family: 'Lucida Grande';
+	font-size: 100px;
+	color: #ffffff;
+}
+#sub-title{
+	font-weight: lighter;
+	font-size: 30px;
+}
+.sign-in-box{
+	margin-top: 50px;
+	margin-left: 20px;
+	display: flex;
+	flex-direction: column;
+	width: 500px;
+	height: 400px;
+	background: rgba(47, 78, 115, .3);
+
+}
+.sign-up-box{
+	margin-top: 50px;
+	margin-left: 20px;
+	display: flex;
+	flex-direction: column;
+	width: 500px;
+	height: 800px;
+	background: rgba(47, 78, 115, .3);
+}
+
+#sign-in-title{
+	margin-top: 20px;
+	display: flex;
+	justify-content: center;
+	color: #ffffff;
+	font-family: 'Lucida Grande';
+	font-size: 20px;
+}
+.form{
+	font-size: 20px;
+	margin: 50px;
+}
+label{
+	color: #ffffff !important;
+	opacity: 0.4;
+}
+.ptype{
+	color: #ffffff !important;
+	opacity: 0.4;
+}
+.login-input{
+	border-color: #ffffff !important;
+	color: #ffffff !important;
+}
+#register{
+	display: flex;
+	font-size: 15px;
+	justify-content: center;
+}
+a{
+	color: #ffffff;
+}
+#physioType{
+	margin-left: 10px;
+	margin-top: -6px;
+}
+

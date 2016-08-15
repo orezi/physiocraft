@@ -1,0 +1,15 @@
+<div class="sign-in-box">
+  <span id="sign-in-title">SIGN IN</span>
+  <div layout-gt-sm="column" class="form" ng-controller="homeCtrl">
+    <md-input-container class="md-block">
+      <label>Email</label>
+      <input ng-model="user.email" type="email" class="login-input" required>
+    </md-input-container>
+    <md-input-container class="md-block">
+      <label>Password</label>
+      <input ng-model="user.password" type="password" class="login-input" required>
+    </md-input-container>
+    <md-button ng-click="loginUser(user)">Sign In</md-button>
+    <span id="register">Or <a ui-sref="landingpage.signup"> Register</a></span>
+  </div>
+</div>
