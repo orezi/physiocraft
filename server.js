@@ -44,6 +44,7 @@ app.use(express.static(__dirname + '/public'));
 require('./app/routes/user.route')(app); // configure our routes
 require('./app/routes/patient.route')(app);
 require('./app/routes/treatment.route')(app);
+require('./app/routes/product.route')(app);
 // start app ===============================================
 // startup our app at http://localhost:8080
 app.listen(port);               
