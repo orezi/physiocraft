@@ -2,15 +2,16 @@ body.md-default-theme, body{
 	background-color: transparent;
 }
 html {
-	background: url(../img/physio.png) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+	
 }
 .big-div{
   display: flex;
   justify-content: center;
+  background: url(../img/physio.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 .title{
 	margin-top: 50px;
@@ -31,7 +32,7 @@ html {
 	display: flex;
 	flex-direction: column;
 	width: 500px;
-	height: 400px;
+	height: 450px;
 	background: rgba(47, 78, 115, .3);
 
 }
@@ -41,7 +42,7 @@ html {
 	display: flex;
 	flex-direction: column;
 	width: 500px;
-	height: 800px;
+	height: 700px;
 	background: rgba(47, 78, 115, .3);
 }
 
@@ -81,4 +82,20 @@ a{
 	margin-left: 10px;
 	margin-top: -6px;
 }
+.phy{
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+#username{
+	color: #3E313C;
+}
 
+.admin-sidenav{
+	width: 80px;
+	height: 700px;
+	background-color: #3E313C !important;
+}
+.md-hue-2{
+	background-color: #3E313C !important;
+}

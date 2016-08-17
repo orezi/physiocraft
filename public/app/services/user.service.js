@@ -25,6 +25,12 @@ angular.module("physiocraft")
         return $http.get("/api/users");
       },
 
+      getCurrentUser: function() {
+        var token = localStorage.getItem('userToken');
+        return $http.get("/api/user?token=" + token);
+      },
+
+
       login: function(param) {
         return $http.post("/api/authenticate", param);
       },

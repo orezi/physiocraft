@@ -1,0 +1,64 @@
+<div layout="row" ng-controller="adminCtrl">
+	<section layout="row">
+    <md-sidenav
+        md-whiteframe="4"
+        class="admin-sidenav"
+        md-component-id="left"
+        md-is-locked-open="$mdMedia('gt-sm')"
+        md-disable-backdrop>
+      <md-toolbar class="md-hue-2">
+        <h1 class="md-toolbar-tools phy">Physio</h1>
+      </md-toolbar>
+      <md-content class="md-hue-2" layout-padding>
+        <p hide show-gt-sm>
+		      <md-button class="md-icon-button" aria-label="More">
+		        <img src="https://maxcdn.icons8.com/windows8/PNG/26/Healthcare/physical_therapy-26.png" width="25" title="Patients" ui-sref="landingpage.signup">
+		      </md-button>
+        </p>
+        <p hide show-gt-sm>
+		      <md-button class="md-icon-button" aria-label="More">
+		        <img src="https://maxcdn.icons8.com/iOS7/PNG/25/Users/add_user_group_filled-25.png" title="Physios" width="25">
+		      </md-button>
+        </p>
+        <p hide show-gt-sm>
+		      <md-button class="md-icon-button" aria-label="More">
+		        <img src="https://maxcdn.icons8.com/iOS7/PNG/25/Healthcare/treatment_plan_filled-25.png" title="Treatments" width="25">
+		      </md-button>
+        </p>
+      </md-content>
+    </md-sidenav>
+  </section>
+  <section layout="column" flex>
+  	<md-toolbar class="md-hue-1" layout="row">
+      <div class="md-toolbar-tools">
+        <span flex></span>
+        <md-button class="md-icon-button" aria-label="Favorite">
+          <img src="https://maxcdn.icons8.com/iOS7/PNG/25/Users/gender_neutral_user-25.png" title="user" width="25">
+        </md-button>
+        <h3>
+          <span id="username">hi, {{user.firstname}}</span>
+        </h3>
+      	<md-menu-bar>
+      		<md-menu>
+             <md-button class="md-icon-button" aria-label="More" ng-click="$mdOpenMenu()">
+		          <img src="https://maxcdn.icons8.com/iOS7/PNG/25/Arrows/down4-25.png" title="Expand Arrow" width="25">
+		        </md-button>
+            <md-menu-content>
+              <md-menu-item>
+                <md-button>
+                  Account
+                </md-button>
+              </md-menu-item>
+              <md-menu-divider></md-menu-divider>
+              <md-menu-item>
+                <md-button ng-click="logout()">
+                  Logout
+                </md-button>
+              </md-menu-item>
+            </md-menu-content>
+          </md-menu>
+        </md-menu-bar>
+      </div>
+    </md-toolbar>
+  </section>
+</div>
