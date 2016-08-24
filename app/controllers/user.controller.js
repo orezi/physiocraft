@@ -67,7 +67,7 @@ UserController.prototype.adminConfirmMail = function(req, res) {
         service: 'Gmail',
         auth: {
           user: 'olarewajuore@gmail.com',
-          pass: 'Wuraorjade'
+          pass: 'sfldjfd dfl'
         }
       });
       var mailOptions = {
