@@ -1,0 +1,70 @@
+<div ng-controller="homeCtrl" data-ng-init="getUserDetails()">
+	<md-card>
+	  <md-toolbar class="md-table-toolbar md-default" style="margin-left: 20px;">
+	    <div class="md-toolbar-tools patient-title">
+	      <h2 class="md-title">Account details</h2>
+	      <div flex="" class="flex"></div>
+	    </div>
+	    <div layout="column">
+	      <div layout="row">
+	      	<md-input-container>
+		    	  <label>Firstname</label>
+			      <input ng-model="user.firstname" type="text" ng-disabled="button" ng-init="button=true">
+			    </md-input-container>
+			    <md-input-container>
+			      <label>Lastname</label>
+			      <input ng-model="user.lastname" type="text" ng-disabled="button" ng-init="button=true">
+			    </md-input-container>
+			    <md-input-container>
+			      <label>Email</label>
+			      <input ng-model="user.email" type="text" ng-disabled="button" ng-init="button=true">
+			    </md-input-container>
+	      </div>
+	      <div layout="row">
+	      	<md-input-container>
+			      <label>Password</label>
+			      <input ng-model="user.password" type="text" ng-disabled="button" ng-init="button=true">
+			    </md-input-container>
+			    <md-input-container layout="row">
+			      <label>Admin</label>
+			      <input ng-model="user.admin" type="text" disabled>
+			    </md-input-container>
+			    <md-input-container>
+			      <label>Verified</label>
+			      <input ng-model="user.verified" type="text" disabled>
+			    </md-input-container>
+	      </div>
+	      <div layout="row">
+	      	<md-input-container>
+			      <label>Associate</label>
+			      <input ng-model="user.associate" type="text" disabled>
+			    </md-input-container>
+			    <md-input-container>
+			      <label>E-media</label>
+			      <input ng-model="user.e_media" type="text" disabled>
+			    </md-input-container>
+			    <md-input-container>
+			      <label>Marketing</label>
+			      <input ng-model="user.marketing" type="text" disabled>
+			    </md-input-container>
+			    <md-input-container>
+			      <label>Finance</label>
+			      <input ng-model="user.finance" type="text" disabled>
+			    </md-input-container>
+			    <md-input-container>
+			      <label>Operations</label>
+			      <input ng-model="user.operation" type="text" disabled>
+			    </md-input-container>
+	      </div>
+		    <div layout="row">
+		    	<md-button class="md-raised" ng-click="button=false">
+			      <label>Edit details</label>
+			    </md-button>
+			    <md-button class="md-raised md-primary" ng-disabled="button" ng-init="button=true" ng-click="updateUserDetails( user); button=true">
+			      <label>Update details</label>
+			    </md-button>
+		    </div>
+	    </div>
+	  </md-toolbar>
+	</md-card>
+</div>

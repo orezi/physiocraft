@@ -1,0 +1,47 @@
+<div ng-controller="patientCtrl">
+	<md-card>
+	  <md-toolbar class="md-table-toolbar md-default">
+	    <h2 class="md-title">New patient details</h2>
+      <div flex="" class="flex"></div>
+	    <md-input-container>
+	      <label>First name</label>
+	      <input ng-model="newpatient.firstname" type="text">
+		  </md-input-container>
+		  <md-input-container>
+		   <label>Last name</label>
+		   <input ng-model="newpatient.lastname" type="text">
+		  </md-input-container>
+		  <md-input-container>
+		   <label>Email</label>
+		   <input ng-model="newpatient.email" type="text">
+		  </md-input-container>
+		  <md-input-container>
+		   <label>Address</label>
+		   <input ng-model="newpatient.address" type="text">
+		  </md-input-container>
+		  <md-input-container>
+		   <label>Age</label>
+		   <input ng-model="newpatient.age" type="text">
+		  </md-input-container>
+		  <md-input-container>
+		   <label>Phone Number</label>
+		   <input ng-model="newpatient.phoneNumber" type="text">
+		  </md-input-container>
+		  <md-input-container>
+		   <label>Gender</label>
+		   <input ng-model="newpatient.gender" type="text">
+		  </md-input-container>
+		  <md-input-container>
+		   <label>Referral source</label>
+		   <input ng-model="newpatient.referralSource" type="text">
+		  </md-input-container>
+		  <md-input-container>
+		   <label>Bill per session</label>
+		   <input ng-model="newpatient.billPerSession" type="text">
+		  </md-input-container>
+		  <md-button ng-click="createPatient(newpatient)">
+		  <label>Submit</label>
+		  </md-button>
+	  </md-toolbar>
+	</md-card>
+</div>

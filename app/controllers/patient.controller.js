@@ -101,14 +101,15 @@ PatientController.prototype.updatePatient = function(req, res) {
 PatientController.prototype.getPatient = function(req, res) {
   var patientId = req.params.patient_id;
   Patient.find({
-    _id: patientId
-  }, function(err, patient) {
-    if (err) {
-      res.status(500).send(err);
-    } else {
+      _id: patientId
+    })
+    .populate('physioRef', 'firstname')
+    .exec(function(err, patient) {
+      if (err) {
+        return res.status(500).send(err);
+      }
       res.json(patient);
-    }
-  });
+    });
 };
 
 module.exports = PatientController;

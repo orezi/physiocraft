@@ -15,14 +15,11 @@ var treatementSchema = new Schema({
   	type: String, 
   	required: true
   },
-  date: {
-    type: String,
-    required: true,
-  },
   duration: {
     type: String,
     required: true
   },
+  createdAt: String,
   physioRef: {
     type: String,
     ref: 'User',
@@ -33,6 +30,14 @@ var treatementSchema = new Schema({
     ref: 'Patient',
     required: true
   }
+});
+
+treatementSchema.pre('save', function(next) {
+  var treatment = this;
+  var currentDate = new Date()
+  var currentDate = currentDate.getDay() + "-" + currentDate.getMonth() + "-" + currentDate.getFullYear()
+  treatment.createdAt = currentDate;
+  next();
 });
 
 var Treatment = mongoose.model('Treatment', treatementSchema);

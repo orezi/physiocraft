@@ -36,6 +36,10 @@ html {
 	background: rgba(47, 78, 115, .3);
 
 }
+.tab{
+	width: 90%;
+	margin-left: 50px;
+}
 .sign-up-box{
 	margin-top: 50px;
 	margin-left: 20px;
@@ -58,7 +62,7 @@ html {
 	font-size: 20px;
 	margin: 50px;
 }
-label{
+.lb{
 	color: #ffffff !important;
 	opacity: 0.4;
 }
@@ -98,4 +102,33 @@ a{
 }
 .md-hue-2{
 	background-color: #3E313C !important;
+}
+.menu-style{
+	min-width: 150px !important;
+}
+.card{
+	padding-bottom: 40px;
+}
+.add-img{
+	height: 28px !important;
+}
+.add-img-icon{
+	height: 20px !important;
+}
+.img-icon{
+	height: 26px !important;
+	width: 26px !important;
+}
+.search-bar{
+	margin-right: 40px;
+}
+.header{
+	height: 40px !important;
+	min-height: 40px !important;
+}
+.div-toolbar{
+  height: 45px !important;
+}
+.patient-title{
+	margin-left: -11px !important;
 }

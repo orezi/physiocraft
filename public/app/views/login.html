@@ -2,11 +2,11 @@
   <span id="sign-in-title">SIGN IN</span>
   <div layout-gt-sm="column" class="form" ng-controller="homeCtrl">
     <md-input-container class="md-block">
-      <label>Email</label>
+      <label class="lb">Email</label>
       <input ng-model="user.email" type="email" class="login-input" required>
     </md-input-container>
     <md-input-container class="md-block">
-      <label>Password</label>
+      <label class="lb">Password</label>
       <input ng-model="user.password" type="password" class="login-input" required>
     </md-input-container>
     <md-button ng-click="loginUser(user)">Sign In</md-button>

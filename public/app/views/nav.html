@@ -1,5 +1,5 @@
 <div layout="row" ng-controller="adminCtrl">
-	<section layout="row">
+	<section>
     <md-sidenav
         md-whiteframe="4"
         class="admin-sidenav"
@@ -11,7 +11,7 @@
       </md-toolbar>
       <md-content class="md-hue-2" layout-padding>
         <p hide show-gt-sm>
-		      <md-button class="md-icon-button" aria-label="More" title="Patients">
+		      <md-button class="md-icon-button" aria-label="More" title="Patients" ui-sref="nav.adminPatient">
 		        <img class="icon icons8-Physical-Therapy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAA0CAYAAADFeBvrAAADi0lEQVRoQ+1Z7XETMRB9WwFJBSQVQCqAVACuAFIBpgJIBSQVYFcA6cCpAFMBUAFOBcu8Q/JozpK18ul0E0/2j2PnPt7TrnbfrgRHZnJkfNCMkKq+BfABwGu3iCsA1yLCz2rWhJCqfgXwPoGapD7XYjQ6IeeZbxnAl7U81YIQQ+pVhtC9iPhQHOSsFoTUglBEqmCp8pB9gFX16AhZQu5ORJgFB1sLDxHo8SQFLrmq3rgaFPPA40rbnoGqMoux3viMd8/vtdK1f8/oITd4UxQ+4IlQyYKp6hmALwBeAuDfOfvu9N06d2Hq/6N5yJH5AeDkAHAzESG5YhuTEAG9KUb0/4YNAOq7Yk+NSejvgd7xa/AbwIWIkJzZxiQUkzx/ADw3owPWInJRcP14DV5Cwy0BvCsBCGAhIlfWe1p76No1evu89ADgWY/ARxGh2shaa0Lc5LcA2MGmjCHG7Ng3UxPYmhBBngIgsaiX2BepKtv1PmlT5puC0Mxlv6iXfKOXIMWFoKeSmW8KQt0mV9VFLEGEnWtCpa9E5DIVr1MQIhbWGGYuflKBbzNfvxVPEE9mvlaEYpmLxKgmmMFIrIq1IsR9Q0+8iKDmfrgREab0wdaKEMOL3pgD+JRA3W14N1nNtez0KD27I2BbEaIXqKBXToUzIcRmdbciMldVXt8vrrF1OO+HaytCHgyrPWcIGzdR5fewHnXzBVVlYWUPlbOdYtuaEAFuex1VZa/EvUXwTMckw0bwV44JACaas35N2hKqfTqQEKdXIrJwRZOpmumXgrUzR4b7Z593OFxhSHLAstMvdYTGOB2IEArJhCqB4Dww6jjKnq0SKJ0KUTc1GwQm5EwYXR1pQ7glLyEhy6h28OmAqjKMYirag1uKSOoMycyRhMzD9AOmOFYgP1l/Stvt2MPNhACcuxU+ZIqzjxizFckUD0RShCwhd+dujk1xCCgEkzvcsniNzwtbhDBx+PvDax78gpiTgjtByHnHvyQE4H/bvtTtJ+4XHiLXMsqhmU/b2dOBAjmSA0iy1GGsR9R2nKzWsnVYWPeeDqjqkMFhH/BGRE4LVIGZsFn6uJczfCyiMQeA4XfipA8HkrVsaSYUSBOGJ2tKycAwBMwkMg8k0L4JUAlRSqg5kwJDjQ+NnQ54zcTR06MwErLMoIuml1MyLymsU+I0v/uJkHmpJrrw+Dw00UKO9tqiOjQaiooP/gf+hpfTfmp9gwAAAABJRU5ErkJggg==" width="25" ui-sref="landingpage.signup">
 		      </md-button>
         </p>
@@ -21,7 +21,7 @@
 		      </md-button>
         </p>
         <p hide show-gt-sm>
-		      <md-button class="md-icon-button" aria-label="More" title="Treatments">
+		      <md-button class="md-icon-button" aria-label="More" title="Treatments" ui-sref="nav.adminTreatment">
 		        <img class="icon icons8-Treatment-Plan" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAABlElEQVRoQ+1a21HEMAxcdQAVQQdQAlQGJXAVQEfQgZkwZMYYJ9FKti/j0X3rtVqt4uQscP5SSskZ4sddRMQTx+W8JD4tkJTSDYAXAI9Mh6wdNTTiDcCziHzl9f1jJKX0DuCeAeEZDQOQJd1FRP40ugZknfnbEnUN3FqIlxGN/++0fNYatwlEEzjXiNa+bAbbiC17FRAN/V4ge6Ocxw4gR+OjYUuzOGqM1rrfhJG9ZJpiteOz2g0F4gWw5x9AtvTArshWLJ2SEc1SKDUYQDyj1WP8rsJIANnZDMMYORJw7YzEPBQDSIg9e3e3Hue1L23dDo17BzzvE36YRphCjxZD7fU1gHjEzrCjtT0lI9ric7sAwo6WRsAME1c7xk8DhOm2xTY0wmrE0mXGZxgj02hkGiDMmFhsh42WpTjGJ4CwW2sajUwDhJl3i21ohNWIpcuMTzdGmCJa2g79M7Rl4WWsZkB6FsnGdn3XYpP1tKeBAFBd4ehZdBmbvcLxAeBuZIGGXKpLNcs1p1cAD4YEI1wuAJ7KCz/fx6MgYO+zM44AAAAASUVORK5CYII=" width="25">
 		      </md-button>
         </p>
@@ -29,23 +29,23 @@
     </md-sidenav>
   </section>
   <section layout="column" flex>
-  	<md-toolbar class="md-hue-1" layout="row">
-      <div class="md-toolbar-tools">
+  	<md-toolbar class="md-hue-1 header" layout="row">
+      <div class="md-toolbar-tools div-toolbar">
         <span flex></span>
         <md-button class="md-icon-button" aria-label="Favorite">
           <img src="https://maxcdn.icons8.com/iOS7/PNG/25/Users/gender_neutral_user-25.png" title="user" width="25">
         </md-button>
-        <h3>
-          <span id="username">hi, {{user.firstname}}</span>
-        </h3>
-      	<md-menu-bar>
+        <span id="username">{{user.firstname}}</span>
+      	<md-menu-bar style="margin-left: -30px;">
       		<md-menu>
-             <md-button class="md-icon-button" aria-label="More" ng-click="$mdOpenMenu()">
-		          <img src="https://maxcdn.icons8.com/iOS7/PNG/25/Arrows/down4-25.png" title="Expand Arrow" width="25">
+            <a>
+            <md-button class="md-icon-button" aria-label="More" ng-click="$mdOpenMenu()">
+		          <img src="https://maxcdn.icons8.com/iOS7/PNG/25/Arrows/down4-25.png" title="Expand Arrow"  style="padding-top: 9px;" width="15">
 		        </md-button>
-            <md-menu-content>
+            </a>
+            <md-menu-content class="menu-style">
               <md-menu-item>
-                <md-button>
+                <md-button ui-sref="nav.user">
                   Account
                 </md-button>
               </md-menu-item>
@@ -60,5 +60,6 @@
         </md-menu-bar>
       </div>
     </md-toolbar>
+    <div ui-view></div>
   </section>
 </div>

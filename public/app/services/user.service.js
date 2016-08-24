@@ -30,7 +30,6 @@ angular.module("physiocraft")
         return $http.get("/api/user?token=" + token);
       },
 
-
       login: function(param) {
         return $http.post("/api/authenticate", param);
       },
@@ -52,12 +51,12 @@ angular.module("physiocraft")
       },
       deleteUser: function() {
         var token = localStorage.getItem("userToken");
-        return $http.delete("/api/useroflife/?token=" + token);
+        return $http.delete("/api/user?token=" + token);
       },
 
       updateUser: function(userObj) {
         var token = localStorage.getItem("userToken");
-        return $http.put("/api/useroflife/?token=" + token, userObj);
+        return $http.put("/api/user?token=" + token, userObj);
       }
     };
 

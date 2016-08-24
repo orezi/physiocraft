@@ -1,10 +1,11 @@
 "use strict";
 // public/app/app.js
-angular.module('physiocraft', ['ui.router', 'ngMaterial', 'ngMessages', 'ngAnimate', 'ngAria'])
+angular.module('physiocraft', ['ui.router', 'ngMaterial', 'ngMessages', 'ngAnimate', 'ngAria', 'md.data.table'])
   .config(function($stateProvider, $urlRouterProvider, $mdThemingProvider) {
     var customMap = $mdThemingProvider.extendPalette('light-blue', {
       '50': 'ffebee',
       '100': '3E313C',
+      '200': '0159A2',
       '500': 'f44336',
       'contrastDefaultColor': 'light'
     });
@@ -15,7 +16,8 @@ angular.module('physiocraft', ['ui.router', 'ngMaterial', 'ngMessages', 'ngAnima
       .primaryPalette('custom', {
         'default': '500',
         'hue-1': '50',
-        'hue-2': '100'
+        'hue-2': '100',
+        'hue-3': '200'
       });
 
     $stateProvider
@@ -33,6 +35,41 @@ angular.module('physiocraft', ['ui.router', 'ngMaterial', 'ngMessages', 'ngAnima
         url: '/signup',
         templateUrl: 'app/views/signup.html',
         controller: 'homeCtrl'
+      })
+      .state('nav.adminPatient', {
+        url: '/patients',
+        templateUrl: 'app/views/admin.patient.html',
+        controller: 'adminCtrl'
+      })
+      .state('nav.adminTreatment', {
+        url: '/treatments',
+        templateUrl: 'app/views/admin.treatment.html',
+        controller: 'adminCtrl'
+      })
+      .state('nav.addPatient', {
+        url: '/newPatient',
+        templateUrl: 'app/views/add.patient.html',
+        controller: 'patientCtrl'
+      })
+      .state('nav.addPatientTreatment', {
+        url: '/patient/:patient_id/newTreatment',
+        templateUrl: 'app/views/add.patient.treatment.html',
+        controller: 'patientCtrl'
+      })
+      .state('nav.treatmentDetails', {
+        url: '/patient/:patient_id/treatment/:treatment_id',
+        templateUrl: 'app/views/treatment.details.html',
+        controller: 'patientCtrl'
+      })
+      .state('nav.user', {
+        url: '/user/:user_id',
+        templateUrl: 'app/views/user.account.html',
+        controller: 'homeCtrl'
+      })
+      .state('nav.patientDetails', {
+        url: '/patient/:patient_id',
+        templateUrl: 'app/views/patient.details.html',
+        controller: 'patientCtrl'
       })
       .state('nav', {
         url: '/nav',

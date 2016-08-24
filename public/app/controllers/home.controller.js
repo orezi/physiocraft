@@ -32,7 +32,7 @@ angular.module("physiocraft")
             $scope.isLoggedIn = true;
             $scope.userInformation = res.data.user;
             if($scope.userInformation.admin == true){
-              $location.url('/nav');  
+              $location.url('/nav/patients');  
             }
             else{ console.log($scope.userInformation);}
           }
@@ -72,4 +72,15 @@ angular.module("physiocraft")
         }
       });
     };
+
+    $scope.getUserDetails = function(){
+      UserService.getCurrentUser().success(function(data){
+        $scope.user = data;
+      });
+    };
+
+    $scope.updateUserDetails = function(updatedUser){
+      UserService.updateUser(updatedUser);
+    };
+
   }]);

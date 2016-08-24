@@ -32,11 +32,13 @@ TreatmentController.prototype.getPatientTreatments = function(req, res) {
   var patientId = req.params.patientId;
   Treatment.find({
     patientRef: patientId
-  }, function(err, treatments) {
-    if (err) {
-      return res.json(err)
+  })
+  .populate('physioRef','firstname')
+  .exec(function(err, treatments) {
+    if(err) {
+      return res.status(500).send(err);
     }
-    return res.json(treatments);
+    res.json(treatments);
   });
 };
 
@@ -55,7 +57,7 @@ TreatmentController.prototype.getPhysioPatientTreatments = function(req, res) {
 };
 
 TreatmentController.prototype.addTreatment = function(req, res) {
-  if (!req.body.history || !req.body.treatmentDetails || !req.body.duration || !req.body.date) {
+  if (!req.body.history || !req.body.treatmentDetails || !req.body.duration) {
     return res.status(422).send({
       success: false,
       message: 'Check parameters!'
@@ -110,12 +112,13 @@ TreatmentController.prototype.getTreatment = function(req, res) {
   var treatmentId = req.params.treatmentId;
   Treatment.find({
     _id: treatmentId
-  }, function(err, treatment) {
-    if (err) {
-      res.status(500).send(err);
-    } else {
-      res.json(treatment);
+  })
+  .populate('physioRef','firstname')
+  .exec(function(err, treatments) {
+    if(err) {
+      return res.status(500).send(err);
     }
+    res.json(treatments);
   });
 };
 

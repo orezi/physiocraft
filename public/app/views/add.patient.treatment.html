@@ -1,0 +1,24 @@
+<div ng-controller="patientCtrl" data-ng-init="getPatient()">
+	<md-card>
+	  <md-toolbar class="md-table-toolbar md-default">
+	    <h2 class="md-title">New Treatment for {{patient[0].firstname}} {{patient[0].lastname}}</h2>
+      <div flex="" class="flex"></div>
+	    <md-input-container>
+	      <label>Patient History</label>
+	      <input ng-model="newtreatment.history" type="text">
+		  </md-input-container>
+		  <md-input-container>
+		   <label>Treatment Details</label>
+		   <input ng-model="newtreatment.treatmentDetails" type="text">
+		  </md-input-container>
+		  <md-input-container>
+		   <label>Duration of treatment session</label>
+		   <input ng-model="newtreatment.duration" type="text">
+		  </md-input-container>
+		  <md-button ng-click="createTreatment(newtreatment)">
+		  <label>Submit</label>
+		  </md-button>
+	  </md-toolbar>
+	  
+	</md-card>
+</div>

@@ -1,0 +1,123 @@
+<div ng-controller="patientCtrl" data-ng-init="getPatient()">
+	<md-card>
+	  <md-toolbar class="md-table-toolbar md-default" style="margin-left: 20px;">
+	    <div class="md-toolbar-tools patient-title">
+	      <h2 class="md-title">Patient Details</h2>
+	      <div flex="" class="flex"></div>
+	    </div>
+	    <div layout="row">
+	    	<md-input-container>
+	    	  <label>First Name</label>
+		      <input ng-model="patient[0].firstname" type="text" ng-disabled="button" ng-init="button=true">
+		    </md-input-container>
+		    <md-input-container>
+		      <label>Last Name</label>
+		      <input ng-model="patient[0].lastname" type="text" ng-disabled="button" ng-init="button=true">
+		    </md-input-container>
+		    <md-input-container>
+		      <label>Email</label>
+		      <input ng-model="patient[0].email" type="text" ng-disabled="button" ng-init="button=true">
+		    </md-input-container>
+		    <md-input-container layout="row">
+		      <label>Physio</label>
+		      <input ng-model="patient[0].physioRef.firstname" type="text" ng-disabled="button" ng-init="button=true">
+		    </md-input-container>
+	    </div>
+	    <div layout="row">
+		    <md-input-container>
+		      <label>Address</label>
+		      <input ng-model="patient[0].address" type="text" ng-disabled="button" ng-init="button=true">
+		    </md-input-container>
+		    <md-input-container>
+		      <label>Age</label>
+		      <input ng-model="patient[0].age" type="text" ng-disabled="button" ng-init="button=true">
+		    </md-input-container>
+		    <md-input-container>
+		      <label>Phone Number</label>
+		      <input ng-model="patient[0].phoneNumber" type="text" ng-disabled="button" ng-init="button=true">
+		    </md-input-container>
+	    </div>
+	    <div layout="row">
+		    <md-input-container>
+		      <label>Gender</label>
+		      <input ng-model="patient[0].gender" type="text" ng-disabled="button" ng-init="button=true">
+		    </md-input-container>
+		    <md-input-container>
+		      <label>Referral Source</label>
+		      <input ng-model="patient[0].referralSource" type="text" ng-disabled="button" ng-init="button=true">
+		    </md-input-container>
+		    <md-input-container>
+		      <label>Bill per session</label>
+		      <input ng-model="patient[0].billPerSession" type="text" ng-disabled="button" ng-init="button=true">
+		    </md-input-container>
+	    </div>    
+	    <div layout="row">
+	    	<md-button class="md-raised" ng-click="button=false">
+		      <label>Edit details</label>
+		    </md-button>
+		    <md-button class="md-raised md-primary" ng-disabled="button" ng-init="button=true" ng-click="updatePatientDetails(patient[0]._id, patient[0]); button=true">
+		      <label>Update details</label>
+		    </md-button>
+	    </div>
+	  </md-toolbar>
+	</md-card>
+	<md-card>
+	  <md-toolbar class="md-table-toolbar md-default">
+	    <div class="md-toolbar-tools">
+	      <h2 class="md-title">Patient Treatments</h2>
+	      <div flex="" class="flex"></div>
+		    <div class="md-title search-bar">
+	        <md-input-container md-no-float class="md-block">
+	          <input ng-model="find" placeholder="search">
+	        </md-input-container>
+	      </div> 
+	      <div ng-click="openAddTreatment(patient[0]._id)">
+	        <md-button class="md-fab md-mini md-hue-3">
+	          <img class="icon icons8-Plus-Math add-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAvUlEQVRoQ+2XwQqFMBAD3f//6D68ibxDGBooMp6362aSVjvXR575iI5LIac5qSM6UiJgtEpgcduqI2ut9ZxsZmrvqzW+BSgEBExHEmhGK6H0qjFaCTSjlVAyWoCS0QLQPLUSaMdF6z1QImJnTfLXHEVLIZts0ZFNIL1YEZDRZieNvepCajqSgDvuy54M/a9GIYCceySBZrQSSt7ZASWjBaBVTy0wD16iEIyutFBHSmBxWx3B6EoLdaQEFrf9AZUqgDNAFE7oAAAAAElFTkSuQmCC" width="26">
+	          <md-tooltip>
+	            Add Treatment
+	          </md-tooltip>
+	        </md-button>
+	      </div>
+	    </div>
+	    <div ng-if="!treatments.length" class="md-toolbar-tools">
+	      <md-button ng-click="openAddTreatment(patient[0]._id)">There are no treatments yet. Click to add a treament</md-button>
+	    </div>
+	    <md-table-container ng-if="treatments.length">
+	      <table md-table md-row-select ng-model="selected">
+	        <thead md-head md-order="query.order">
+	          <th md-column>History</th>
+	          <th md-column>Treatment details</th>
+	          <th md-column>Duration</th>
+	          <th md-column>Date Added</th>
+	          <th md-column>Physio</th>
+	        </thead>
+	        <tbody md-body>
+	          <tr md-row ng-repeat="treatment in filtered=(treatments | filter: find)">
+	            <td md-cell>{{treatment.history}}</td>
+	            <td md-cell>{{treatment.treatmentDetails}}</td>
+	            <td md-cell>{{treatment.duration}}</td>
+	            <td md-cell>{{treatment.createdAt}}</td>
+	            <td md-cell>{{treatment.physioRef.firstname}}</td>
+	            <td md-cell layout="row">
+	              <md-button class="md-icon-button" aria-label="More" ng-click="openTreatmentDetails(treatment.patientRef, treatment._id)">
+	                <img class="icon icons8-Expand-Filled add-img-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAACnElEQVRoQ+2ZwU7bQBCGZ0o4NzwBiURyjjAP0r4BXGhyIm8AvEFvcXpJ36B9EIJyjpESnoD0iBoYtMGWzHbXnl3PSm7kHKPdmfn8z3rGswh78sM94YAGpG5KNor8N4qcxQlxgyWgNRHc3o/6P7l71LrTaTJGoisE7HD33Q17xiyyppYLiApCwcyH/S43ILUuipMnBGi77AkPQvA4H/XYTzYF2SDA59qAEMEjAd14pdYrjBHhmAsjqsgr0YVr0NxATyfL80+IM9t6URDlJARMGYTyKw4iDcOBEAFRCpgkl1DGBmHyWVkRZaDIoe+ZKbOplwERkF0RsxxGH2U4toKBSMFwIJSvyiDRJFln73dVJ/Rixw3E9Bp12VsWR2bf2qIoZwh4k7YfxmLnElDmMJo+fEGiXzqgLTU5cShbldt4EwwBbObD3pEe7GC2ah88b1d6f+VzvnTblUFsZ2ZLre5i1F3nHSqQ1vP2Kf+fBISIIllQH5QhuL0b9XZpqf+i+OE7Al0RwB8iGvu+toMokhkdTFYdOPjbXlz2F0W91eDHcgAvhxtdMW4/ZlonklpVApDa24BIPUkpO40iUk9Syo6YIqpiA9H7lx3ixfzbyW9je5JOTgCwXbTOFVAERK/uRROVKF6u8uOf2hREY4tSMFGJ4uSfyYkETHHTiHC9axotwzdb00iIX22p5dU0lsRR2KLkU8CUKj6dr7GdyR0GkzJlcWTb2ZPG/CdmFQhXmMofVjYDEhAuMEFAJCG4MOIgezMOMhUoiddmmTK638rjIN2gJIQLjChICAgujCiIro73jZWa1CBc78GN1ce+i9MoBlUkbWPcb6xyQ0AOhFoTFMT7xiodAga9seI+obqsE/keqQNMA1IHFfIxNIrUTZE3K/dKUVCeiuIAAAAASUVORK5CYII=">
+	                <md-tooltip>
+	                  More
+	                </md-tooltip>
+	              </md-button>
+	              <md-button class="md-icon-button" aria-label="More" ng-click="showConfirm($event, treatment._id)">
+	                <img class="icon icons8-Delete-Filled add-img-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAABrUlEQVRoQ+1a0VHDMAyVwgDwxV36A0xA+9tkApIPRmADRqCdAEZgiKQTJPw2bND+pHf8wAJUXEp6B7nallsn5YLyGcuWnvRkW4kQevJgT3CAUyBlFDwiwC0gXmodRLQAxGc/yaauHOkMSBmPnxC8e0vDpn6STSzn7BR3CCR8R4Czk/V6dD57KXTGvd2Mh5+eNweihZ/mV38KyCoOqTLITzKWc2zlTWBZSk2LVOO2htnKm2zQAimjYI6IQ9MiXYwTUTFI85FKlx5IHBQIeN2FoSYdBPQ6SHKlU1nU2tLApKytcU7eCZC2vL9rXYlI0yv/KkeqE71ywObE/vHYvj86tbY8bkbP9r0A4ew+nByx9bxKXiIiEWl4QKhV1zE6ZnR6sktEJCK/yejsGi/UEmoJtfR3AMkRyRHJEcmRzaHLLYGlsJLCSgqrbw/IxwdFLji7xtt+UVTJH33X4mwa+8p0WrPvayRnngDp72+FKPwAhFMODZzLEC39NNe3hADwelFWcVi1WTw4N5K3IKvNg7X91pe+CRDdAeIFT/+BUkTLuvGG1avCBnKgWa1P7w2QL2BIJVF/S5qmAAAAAElFTkSuQmCC">
+	                <md-tooltip>
+	                  Delete
+	                </md-tooltip>
+	              </md-button>
+	            </td>
+	          </tr>
+	        </tbody>
+	      </table>
+	    </md-table-container>
+	    </div>    
+	  </md-toolbar>
+	</md-card>
+</div>
