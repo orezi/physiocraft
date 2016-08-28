@@ -24,6 +24,50 @@ UserController.prototype.getUsers = function(req, res) {
   });
 };
 
+UserController.prototype.getVerifiedUsers = function(req, res) {
+  User.find({
+    verified: true
+  },function(err, users) {
+    if (err) {
+      return res.json(err);
+    }
+    if (!users) {
+      return res.json({
+        success: false,
+        message: 'No users found'
+      });
+    }
+    return res.json(users);
+  });
+};
+
+UserController.prototype.getPendingUsers = function(req, res) {
+  User.findById(req.decoded._doc._id, function(err, user) {
+    if (user.admin == true) {
+      User.find({
+        verified: false
+      }, function(err, users) {
+        if (err) {
+          return res.json(err);
+        }
+        if (!users) {
+          return res.json({
+            success: false,
+            message: "No pending users"
+          });
+        }
+        return res.json(users);
+      });
+    }
+    else{
+      return res.json({
+        success: false,
+        message: 'Not authorized!'
+      });
+    }
+  });
+};
+
 UserController.prototype.createUser = function(req, res) {
   if (!req.body.firstname || !req.body.lastname || !req.body.email || !req.body.password) {
     return res.status(422).send({
@@ -61,13 +105,12 @@ UserController.prototype.adminConfirmMail = function(req, res) {
       return res.json(err);
     }
     if (user) {
-      console.log("user", user[0]);
       var user = user[0];
       var transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
           user: 'olarewajuore@gmail.com',
-          pass: 'sfldjfd dfl'
+          pass: 'Wuraorjade'
         }
       });
       var mailOptions = {
@@ -76,7 +119,7 @@ UserController.prototype.adminConfirmMail = function(req, res) {
         subject: 'Confirm registration of new physio',
         text: 'There is a new physio to be confirmed',
         html: '<b> Hello ' + user.firstname + ',\n A new user has requested to be a physiotherapist \n' +
-          'Click <a href="https://www.youtube.com/watch?v=wulMdCsgDBA"> here</a> to confirm user details</b>'
+          'Click <a href="http://localhost:8080"> here</a> to confirm user details</b>'
       };
 
       transporter.sendMail(mailOptions, function(error, info) {
@@ -124,6 +167,33 @@ UserController.prototype.deleteUser = function(req, res) {
     });
   });
 }
+
+UserController.prototype.deletePhysio = function(req, res) {
+  var physioId = req.params.physio_id;
+  User.remove({
+    _id: physioId
+  }, function(err, user) {
+    if (err) {
+      return res.json(err);
+    }
+    return res.json({
+      success: true,
+      message: "physio has been deleted"
+    });
+  });
+}
+
+UserController.prototype.getPhysio = function(req, res) {
+  var physioId = req.params.physio_id;
+  User.find({
+    _id: physioId
+  }, function(err, user) {
+    if (err) {
+      return res.json(err);
+    }
+    return res.json(user);
+  });
+};
 
 UserController.prototype.updateUser = function(req, res) {
   User.findByIdAndUpdate({
@@ -248,8 +318,7 @@ UserController.prototype.makeOperation = function(req, res) {
         success: false,
         message: "not authorized"
       });
-    }
-    else {
+    } else {
       User.findByIdAndUpdate(req.params.id, {
         $set: {
           operation: true,
@@ -273,8 +342,7 @@ UserController.prototype.makeFinance = function(req, res) {
         success: false,
         message: "not authorized"
       });
-    }
-    else {
+    } else {
       User.findByIdAndUpdate(req.params.id, {
         $set: {
           finance: true,
@@ -298,8 +366,7 @@ UserController.prototype.makeMarketing = function(req, res) {
         success: false,
         message: "not authorized"
       });
-    }
-    else {
+    } else {
       User.findByIdAndUpdate(req.params.id, {
         $set: {
           marketing: true,
@@ -323,8 +390,7 @@ UserController.prototype.makeEMedia = function(req, res) {
         success: false,
         message: "not authorized"
       });
-    }
-    else {
+    } else {
       User.findByIdAndUpdate(req.params.id, {
         $set: {
           e_media: true,
@@ -348,8 +414,7 @@ UserController.prototype.makeAssociate = function(req, res) {
         success: false,
         message: "not authorized"
       });
-    }
-    else {
+    } else {
       User.findByIdAndUpdate(req.params.id, {
         $set: {
           associate: true,
@@ -366,15 +431,14 @@ UserController.prototype.makeAssociate = function(req, res) {
   });
 };
 
-UserController.prototype.makeFounder = function(req, res) {
+UserController.prototype.makeAdmin = function(req, res) {
   User.findById(req.decoded._doc._id, function(err, user) {
     if (user.admin == false) {
       return res.json({
         success: false,
         message: "not authorized"
       });
-    }
-    else {
+    } else {
       User.findByIdAndUpdate(req.params.id, {
         $set: {
           associate: true,

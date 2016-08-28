@@ -1,0 +1,94 @@
+<md-card class="card" ng-controller="adminCtrl" data-ng-init="getVerifiedUsers(); getPendingUsers()">
+  <md-toolbar class="md-table-toolbar md-default">
+    <div class="md-toolbar-tools">
+      <h2 class="md-title">Physios</h2>
+      <div flex="" class="flex"></div>
+      <div class="md-title search-bar">
+        <md-input-container md-no-float class="md-block">
+          <input ng-model="find" placeholder="search">
+        </md-input-container>
+      </div> 
+    </div>
+    <md-table-container ng-if="physios.length">
+      <table md-table md-row-select ng-model="selected">
+        <thead md-head md-order="query.order">
+          <th md-column>Firstname</th>
+          <th md-column>Lastname</th>
+          <th md-column>Email</th>
+          <th md-column>Operation</th>
+          <th md-column>Marketing</th>
+          <th md-column>Finance</th>
+          <th md-column>E-media</th>
+          <th md-column>Associate</th>
+
+        </thead>
+        <tbody md-body>
+          <tr md-row ng-repeat="physio in filtered=(physios | filter: find)">
+            <td md-cell>{{physio.firstname}}</td>
+            <td md-cell>{{physio.lastname}}</td>
+            <td md-cell>{{physio.email}}</td>
+            <td md-cell>{{physio.operation}}</td>
+            <td md-cell>{{physio.marketing}}</td>
+            <td md-cell>{{physio.finance}}</td>
+            <td md-cell>{{physio.e_media}}</td>
+            <td md-cell>{{physio.associate}}</td>
+            <td md-cell layout="row">
+              <md-button class="md-icon-button" aria-label="More" ng-click="showConfirmPhysio($event, physio._id)">
+                <img class="icon icons8-Delete-Filled add-img-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAABrUlEQVRoQ+1a0VHDMAyVwgDwxV36A0xA+9tkApIPRmADRqCdAEZgiKQTJPw2bND+pHf8wAJUXEp6B7nallsn5YLyGcuWnvRkW4kQevJgT3CAUyBlFDwiwC0gXmodRLQAxGc/yaauHOkMSBmPnxC8e0vDpn6STSzn7BR3CCR8R4Czk/V6dD57KXTGvd2Mh5+eNweihZ/mV38KyCoOqTLITzKWc2zlTWBZSk2LVOO2htnKm2zQAimjYI6IQ9MiXYwTUTFI85FKlx5IHBQIeN2FoSYdBPQ6SHKlU1nU2tLApKytcU7eCZC2vL9rXYlI0yv/KkeqE71ywObE/vHYvj86tbY8bkbP9r0A4ew+nByx9bxKXiIiEWl4QKhV1zE6ZnR6sktEJCK/yejsGi/UEmoJtfR3AMkRyRHJEcmRzaHLLYGlsJLCSgqrbw/IxwdFLji7xtt+UVTJH33X4mwa+8p0WrPvayRnngDp72+FKPwAhFMODZzLEC39NNe3hADwelFWcVi1WTw4N5K3IKvNg7X91pe+CRDdAeIFT/+BUkTLuvGG1avCBnKgWa1P7w2QL2BIJVF/S5qmAAAAAElFTkSuQmCC">
+                <md-tooltip>
+                  Delete
+                </md-tooltip>
+              </md-button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </md-table-container>
+  </md-toolbar>
+
+
+  <md-toolbar class="md-table-toolbar md-default" ng-if="pendingPhysios.length">
+    <div class="md-toolbar-tools">
+      <h2 class="md-title">Pending Physios</h2>
+      <div flex="" class="flex"></div>
+      <div class="md-title search-bar">
+        <md-input-container md-no-float class="md-block">
+          <input ng-model="find" placeholder="search">
+        </md-input-container>
+      </div> 
+    </div>
+    <md-table-container>
+      <table md-table md-row-select ng-model="selected">
+        <thead md-head md-order="query.order">
+          <th md-column>Firstname</th>
+          <th md-column>Lastname</th>
+          <th md-column>Email</th>
+          <th md-column>Verified</th>
+
+        </thead>
+        <tbody md-body>
+          <tr md-row ng-repeat="pendingPhysio in filtered=(pendingPhysios | filter: find)">
+            <td md-cell>{{pendingPhysio.firstname}}</td>
+            <td md-cell>{{pendingPhysio.lastname}}</td>
+            <td md-cell>{{pendingPhysio.email}}</td>
+            <td md-cell>{{pendingPhysio.verified}}</td>
+            <td md-cell layout="row">
+              <md-button class="md-icon-button" aria-label="More" ng-click="openPendingPhysioDetails(pendingPhysio._id)">
+                <img class="icon icons8-Expand-Filled add-img-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAACnElEQVRoQ+2ZwU7bQBCGZ0o4NzwBiURyjjAP0r4BXGhyIm8AvEFvcXpJ36B9EIJyjpESnoD0iBoYtMGWzHbXnl3PSm7kHKPdmfn8z3rGswh78sM94YAGpG5KNor8N4qcxQlxgyWgNRHc3o/6P7l71LrTaTJGoisE7HD33Q17xiyyppYLiApCwcyH/S43ILUuipMnBGi77AkPQvA4H/XYTzYF2SDA59qAEMEjAd14pdYrjBHhmAsjqsgr0YVr0NxATyfL80+IM9t6URDlJARMGYTyKw4iDcOBEAFRCpgkl1DGBmHyWVkRZaDIoe+ZKbOplwERkF0RsxxGH2U4toKBSMFwIJSvyiDRJFln73dVJ/Rixw3E9Bp12VsWR2bf2qIoZwh4k7YfxmLnElDmMJo+fEGiXzqgLTU5cShbldt4EwwBbObD3pEe7GC2ah88b1d6f+VzvnTblUFsZ2ZLre5i1F3nHSqQ1vP2Kf+fBISIIllQH5QhuL0b9XZpqf+i+OE7Al0RwB8iGvu+toMokhkdTFYdOPjbXlz2F0W91eDHcgAvhxtdMW4/ZlonklpVApDa24BIPUkpO40iUk9Syo6YIqpiA9H7lx3ixfzbyW9je5JOTgCwXbTOFVAERK/uRROVKF6u8uOf2hREY4tSMFGJ4uSfyYkETHHTiHC9axotwzdb00iIX22p5dU0lsRR2KLkU8CUKj6dr7GdyR0GkzJlcWTb2ZPG/CdmFQhXmMofVjYDEhAuMEFAJCG4MOIgezMOMhUoiddmmTK638rjIN2gJIQLjChICAgujCiIro73jZWa1CBc78GN1ce+i9MoBlUkbWPcb6xyQ0AOhFoTFMT7xiodAga9seI+obqsE/keqQNMA1IHFfIxNIrUTZE3K/dKUVCeiuIAAAAASUVORK5CYII=">
+                <md-tooltip>
+                  More
+                </md-tooltip>
+              </md-button>
+              <md-button class="md-icon-button" aria-label="More" ng-click="showPendingPhysioConfirm($event, pendingPhysio._id)">
+                <img class="icon icons8-Delete-Filled add-img-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAABrUlEQVRoQ+1a0VHDMAyVwgDwxV36A0xA+9tkApIPRmADRqCdAEZgiKQTJPw2bND+pHf8wAJUXEp6B7nallsn5YLyGcuWnvRkW4kQevJgT3CAUyBlFDwiwC0gXmodRLQAxGc/yaauHOkMSBmPnxC8e0vDpn6STSzn7BR3CCR8R4Czk/V6dD57KXTGvd2Mh5+eNweihZ/mV38KyCoOqTLITzKWc2zlTWBZSk2LVOO2htnKm2zQAimjYI6IQ9MiXYwTUTFI85FKlx5IHBQIeN2FoSYdBPQ6SHKlU1nU2tLApKytcU7eCZC2vL9rXYlI0yv/KkeqE71ywObE/vHYvj86tbY8bkbP9r0A4ew+nByx9bxKXiIiEWl4QKhV1zE6ZnR6sktEJCK/yejsGi/UEmoJtfR3AMkRyRHJEcmRzaHLLYGlsJLCSgqrbw/IxwdFLji7xtt+UVTJH33X4mwa+8p0WrPvayRnngDp72+FKPwAhFMODZzLEC39NNe3hADwelFWcVi1WTw4N5K3IKvNg7X91pe+CRDdAeIFT/+BUkTLuvGG1avCBnKgWa1P7w2QL2BIJVF/S5qmAAAAAElFTkSuQmCC">
+                <md-tooltip>
+                  Delete
+                </md-tooltip>
+              </md-button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </md-table-container>
+  </md-toolbar>
+</md-card>

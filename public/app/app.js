@@ -41,11 +41,6 @@ angular.module('physiocraft', ['ui.router', 'ngMaterial', 'ngMessages', 'ngAnima
         templateUrl: 'app/views/admin.patient.html',
         controller: 'adminCtrl'
       })
-      .state('nav.adminTreatment', {
-        url: '/treatments',
-        templateUrl: 'app/views/admin.treatment.html',
-        controller: 'adminCtrl'
-      })
       .state('nav.addPatient', {
         url: '/newPatient',
         templateUrl: 'app/views/add.patient.html',
@@ -65,6 +60,16 @@ angular.module('physiocraft', ['ui.router', 'ngMaterial', 'ngMessages', 'ngAnima
         url: '/user/:user_id',
         templateUrl: 'app/views/user.account.html',
         controller: 'homeCtrl'
+      })
+      .state('nav.physios', {
+        url: '/physios',
+        templateUrl: 'app/views/physios.html',
+        controller: 'adminCtrl'
+      })
+      .state('nav.pendingPhysioDetails', {
+        url: '/physioDetails/:physio_id',
+        templateUrl: 'app/views/pending.physio.details.html',
+        controller: 'adminCtrl'
       })
       .state('nav.patientDetails', {
         url: '/patient/:patient_id',

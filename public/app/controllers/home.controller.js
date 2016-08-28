@@ -39,7 +39,6 @@ angular.module("physiocraft")
         }
       });
     };
-    $scope.physioTypes = ('Associate Finance Marketing E-media Operation').split(' ').map(function (physioType) { return physioType; });
 
     //create a new user
     $scope.signUp = function(newUser) {

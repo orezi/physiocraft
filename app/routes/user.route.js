@@ -11,6 +11,9 @@ module.exports = function(app) {
     .post(user.createUser)
     .delete(user.deleteAll);
 
+  router.route('/verifiedUsers')
+    .get(user.verifyToken, user.getVerifiedUsers);
+
   router.route('/authenticate')
     .post(user.authenticate);
 
@@ -23,10 +26,17 @@ module.exports = function(app) {
   router.route('/verify/:user_id')
     .post(user.confirmUser);
 
+  router.route('/pending')
+    .get(user.verifyToken, user.getPendingUsers);
+
   router.route('/user')
     .put(user.verifyToken, user.updateUser)
     .get(user.verifyToken, user.getCurrentUser)
     .delete(user.verifyToken, user.deleteUser);
+
+  router.route('/physio/:physio_id')
+    .delete(user.verifyToken, user.deletePhysio)
+    .get(user.verifyToken, user.getPhysio);
 
   router.route('/user/:id/operation')
     .put(user.verifyToken, user.makeOperation);
@@ -43,8 +53,8 @@ module.exports = function(app) {
   router.route('/user/:id/associate')
     .put(user.verifyToken, user.makeAssociate);
 
-  router.route('/user/:id/founder')
-    .put(user.verifyToken, user.makeFounder);
+  router.route('/user/:id/admin')
+    .put(user.verifyToken, user.makeAdmin);
 
   app.use('/api', router);
   // frontend routes =========================================================
