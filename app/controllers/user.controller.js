@@ -109,8 +109,8 @@ UserController.prototype.adminConfirmMail = function(req, res) {
       var transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
-          user: 'olarewajuore@gmail.com',
-          pass: 'Wuraorjade'
+          user: 'physiocraft.noreply@gmail.com',
+          pass: '#Physio.noreply'
         }
       });
       var mailOptions = {
@@ -119,7 +119,7 @@ UserController.prototype.adminConfirmMail = function(req, res) {
         subject: 'Confirm registration of new physio',
         text: 'There is a new physio to be confirmed',
         html: '<b> Hello ' + user.firstname + ',\n A new user has requested to be a physiotherapist \n' +
-          'Click <a href="http://localhost:8080"> here</a> to confirm user details</b>'
+          'Click <a href="https://physiocraft.herokuapp.com"> here</a> to confirm user details</b>'
       };
 
       transporter.sendMail(mailOptions, function(error, info) {
