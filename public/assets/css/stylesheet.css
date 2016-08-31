@@ -19,16 +19,15 @@ html {
 	justify-content: center;
 	flex-direction: column;
 	font-family: 'Lucida Grande';
-	font-size: 100px;
+	font-size: 70px;
 	color: #ffffff;
 }
 #sub-title{
 	font-weight: lighter;
-	font-size: 30px;
+	font-size: 20px;
 }
 .sign-in-box{
 	margin-top: 50px;
-	margin-left: 20px;
 	display: flex;
 	flex-direction: column;
 	width: 500px;
@@ -42,7 +41,6 @@ html {
 }
 .sign-up-box{
 	margin-top: 50px;
-	margin-left: 20px;
 	display: flex;
 	flex-direction: column;
 	width: 500px;
@@ -92,7 +90,7 @@ a{
 	flex-direction: column;
 }
 #username{
-	color: #3E313C;
+	color: #ffffff !important;
 }
 
 .admin-sidenav{
@@ -127,8 +125,22 @@ a{
 	min-height: 40px !important;
 }
 .div-toolbar{
-  height: 45px !important;
+  height: 45px !important; 
 }
 .patient-title{
 	margin-left: -11px !important;
+}
+.ptdetails{
+	margin-left: 20px;
+	width:550px;
+}
+label{
+	font-size: 12px;
+}
+.subtn{
+	width: 100px;
+  margin-left: 20px;
+}
+.marg{
+	margin-left: 40px;
 }

@@ -1,15 +1,27 @@
 <div class="sign-in-box">
   <span id="sign-in-title">SIGN IN</span>
   <div layout-gt-sm="column" class="form" ng-controller="homeCtrl">
-    <md-input-container class="md-block">
-      <label class="lb">Email</label>
-      <input ng-model="user.email" type="email" class="login-input" required>
-    </md-input-container>
-    <md-input-container class="md-block">
-      <label class="lb">Password</label>
-      <input ng-model="user.password" type="password" class="login-input" required>
-    </md-input-container>
-    <md-button ng-click="loginUser(user)">Sign In</md-button>
-    <span id="register">Or <a ui-sref="landingpage.signup"> Register</a></span>
+    <form name="loginForm">
+      <md-input-container class="md-block">
+        <label class="lb">Email</label>
+        <input ng-model="user.email" name="email" ng-pattern="/^.+@.+\..+$/" type="email" class="login-input" required>
+        <div ng-messages="loginForm.email.$error">
+          <div ng-message-exp="['required', 'pattern']">
+              Your email should look like an e-mail address.
+          </div>
+        </div>
+      </md-input-container>
+      <md-input-container class="md-block">
+        <label class="lb">Password</label>
+        <input ng-model="user.password" type="password" name="password" class="login-input" required>
+        <div ng-messages="loginForm.password.$error">
+          <div ng-message="required">
+              This is required
+          </div>
+        </div>
+      </md-input-container>
+      <md-button ng-click="loginUser(user)" class="md-raised" style="margin-left:125px; padding-left: 50px; padding-right: 50px;" type="submit">Sign In</md-button>
+    </form>
+    <span id="register"><a ui-sref="landingpage.signup"> Or Register</a></span>
   </div>
 </div>

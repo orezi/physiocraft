@@ -1,31 +1,46 @@
 <div ng-controller="patientCtrl" data-ng-init="getTreatment()">
 	<md-card>
 	  <md-toolbar class="md-table-toolbar md-default" style="margin-left: 20px;">
-	    <div class="md-toolbar-tools patient-title">
-	      <h2 class="md-title">Treatment Details</h2>
-	      <div flex="" class="flex"></div>
+	    <div layout="row">
+	    	<md-button class="md-icon-button" aria-label="More" ng-click="openPatientDetailsView(treatment[0].patientRef)">
+	        <img src="https://maxcdn.icons8.com/Android_L/PNG/24/Arrows/left-24.png" title="Left" width="24" style="margin-top:10px;">
+	        <md-tooltip>
+	          Back
+	        </md-tooltip>
+	      </md-button>
+		    <div class="md-toolbar-tools patient-title">
+		      <h2 class="md-title">Treatment Details</h2>
+		      <div flex="" class="flex"></div>
+		    </div>
 	    </div>
-	    <div layout="column">
-	    	<md-input-container>
+	    <div layout="column" style="font-size: 15px;">
+	    	<md-input-container style="width: 500px;">
+	    	  <md-icon> history </md-icon>
 	    	  <label>History</label>
 		      <textarea ng-model="treatment[0].history" md-maxlength="150" rows="5" md-select-on-focus ng-disabled="button" ng-init="button=true"></textarea>
 		    </md-input-container>
-		    <md-input-container>
+		    <md-input-container style="width: 500px;">
+		      <md-icon> details </md-icon>
 		      <label>Treatment Details</label>
 		      <textarea ng-model="treatment[0].treatmentDetails" md-maxlength="150" rows="5" md-select-on-focus ng-disabled="button" ng-init="button=true"></textarea>
 		    </md-input-container>
-		    <md-input-container>
-		      <label>Duration</label>
-		      <input ng-model="treatment[0].duration" type="text" ng-disabled="button" ng-init="button=true">
-		    </md-input-container>
-		    <md-input-container layout="row">
-		      <label>Date Added</label>
-		      <input ng-model="treatment[0].createdAt" type="text" ng-disabled="button" ng-init="button=true">
-		    </md-input-container>
-		    <md-input-container>
-		      <label>Physio</label>
-		      <input ng-model="treatment[0].physioRef.firstname" type="text" disabled>
-		    </md-input-container>
+		    <div layout="row">
+		    	<md-input-container>
+		    	  <md-icon> alarm </md-icon>
+			      <label>Duration</label>
+			      <input ng-model="treatment[0].duration" type="text" ng-disabled="button" ng-init="button=true">
+			    </md-input-container>
+			    <md-input-container layout="row" class="marg">
+			      <md-icon> date_range </md-icon>
+			      <label>Date Added</label>
+			      <input ng-model="treatment[0].createdAt" type="text" ng-disabled="button" ng-init="button=true">
+			    </md-input-container>
+			    <md-input-container class="marg">
+			      <md-icon> perm_identity </md-icon>
+			      <label>Physio</label>
+			      <input ng-model="treatment[0].physioRef.firstname" type="text" disabled>
+			    </md-input-container>
+		    </div>
 		    <div layout="row">
 		    	<md-button class="md-raised" ng-click="button=false">
 			      <label>Edit details</label>

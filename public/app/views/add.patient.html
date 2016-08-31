@@ -1,45 +1,68 @@
 <div ng-controller="patientCtrl">
 	<md-card>
-	  <md-toolbar class="md-table-toolbar md-default">
-	    <h2 class="md-title">New patient details</h2>
+	  <md-toolbar class="md-table-toolbar md-default ptdetails">
+	    <div layout="row">
+	    	<md-button class="md-icon-button" aria-label="More" ui-sref="nav.adminPatient">
+	        <img src="https://maxcdn.icons8.com/Android_L/PNG/24/Arrows/left-24.png" title="Left" width="24" style="margin-top:10px;">
+	        <md-tooltip>
+	          Back
+	        </md-tooltip>
+	      </md-button>
+		    <h2 class="md-title">New patient details</h2>
+	    </div>
       <div flex="" class="flex"></div>
-	    <md-input-container>
-	      <label>First name</label>
-	      <input ng-model="newpatient.firstname" type="text">
-		  </md-input-container>
-		  <md-input-container>
-		   <label>Last name</label>
-		   <input ng-model="newpatient.lastname" type="text">
-		  </md-input-container>
-		  <md-input-container>
-		   <label>Email</label>
-		   <input ng-model="newpatient.email" type="text">
-		  </md-input-container>
-		  <md-input-container>
-		   <label>Address</label>
-		   <input ng-model="newpatient.address" type="text">
-		  </md-input-container>
-		  <md-input-container>
-		   <label>Age</label>
-		   <input ng-model="newpatient.age" type="text">
-		  </md-input-container>
-		  <md-input-container>
-		   <label>Phone Number</label>
-		   <input ng-model="newpatient.phoneNumber" type="text">
-		  </md-input-container>
-		  <md-input-container>
-		   <label>Gender</label>
-		   <input ng-model="newpatient.gender" type="text">
-		  </md-input-container>
-		  <md-input-container>
-		   <label>Referral source</label>
-		   <input ng-model="newpatient.referralSource" type="text">
-		  </md-input-container>
-		  <md-input-container>
-		   <label>Bill per session</label>
-		   <input ng-model="newpatient.billPerSession" type="text">
-		  </md-input-container>
-		  <md-button ng-click="createPatient(newpatient)">
+      <div layout="row">
+      	<md-input-container>
+      	  <md-icon> perm_identity </md-icon>
+		      <label>First name</label>
+		      <input ng-model="newpatient.firstname" type="text">
+			  </md-input-container>
+			  <md-input-container class="marg">
+			    <md-icon> perm_identity </md-icon>
+			    <label>Last name</label>
+			    <input ng-model="newpatient.lastname" type="text">
+			  </md-input-container>
+			  <md-input-container class="marg">
+			    <md-icon> mail_outline </md-icon>
+			    <label>Email</label>
+			    <input ng-model="newpatient.email" type="text">
+			  </md-input-container>
+      </div>
+      <div layout="row">
+      	<md-input-container>
+      	  <md-icon> location_on </md-icon>
+			    <label>Address</label>
+			    <input ng-model="newpatient.address" type="text">
+			  </md-input-container>
+			  <md-input-container class="marg">
+			    <md-icon> av_timer </md-icon>
+			    <label>Age</label>
+			    <input ng-model="newpatient.age" type="text">
+			  </md-input-container>
+			  <md-input-container class="marg">
+			    <md-icon> phone </md-icon>
+			    <label>Phone Number</label>
+			    <input ng-model="newpatient.phoneNumber" type="text">
+			  </md-input-container>
+      </div>
+      <div layout="row">
+      	<md-input-container>
+      	  <md-icon> wc </md-icon>
+			    <label>Gender</label>
+			    <input ng-model="newpatient.gender" type="text">
+			  </md-input-container>
+			  <md-input-container class="marg">
+			    <md-icon> speaker_notes </md-icon>
+			    <label>Referral source</label>
+			    <input ng-model="newpatient.referralSource" type="text">
+			  </md-input-container>
+			  <md-input-container class="marg">
+			    <md-icon> receipt </md-icon>
+			    <label>Bill per session</label>
+			    <input ng-model="newpatient.billPerSession" type="text" number>
+			  </md-input-container>
+      </div>
+		  <md-button class="subtn md-raised md-primary" ng-click="createPatient(newpatient)">
 		  <label>Submit</label>
 		  </md-button>
 	  </md-toolbar>

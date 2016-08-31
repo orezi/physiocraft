@@ -3,11 +3,10 @@
 angular.module('physiocraft', ['ui.router', 'ngMaterial', 'ngMessages', 'ngAnimate', 'ngAria', 'md.data.table'])
   .config(function($stateProvider, $urlRouterProvider, $mdThemingProvider) {
     var customMap = $mdThemingProvider.extendPalette('light-blue', {
-      '50': 'ffebee',
+      '50': '5A8DEB',
       '100': '3E313C',
       '200': '0159A2',
-      '500': 'f44336',
-      'contrastDefaultColor': 'light'
+      '500': 'f44336'
     });
 
     $mdThemingProvider.definePalette('custom', customMap);

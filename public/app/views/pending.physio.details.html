@@ -1,31 +1,46 @@
 <div ng-controller="adminCtrl" data-ng-init="getPhysio()">
 	<md-card>
 	  <md-toolbar class="md-table-toolbar md-default" style="margin-left: 20px;">
-	    <div class="md-toolbar-tools patient-title">
+	    <div layout="row">
+	    	<md-button class="md-icon-button" aria-label="More" ui-sref="nav.physios">
+	        <img src="https://maxcdn.icons8.com/Android_L/PNG/24/Arrows/left-24.png" title="Left" width="24" style="margin-top:10px;">
+	        <md-tooltip>
+	          Back
+	        </md-tooltip>
+	      </md-button>
+		    <div class="md-toolbar-tools patient-title">
 	      <h2 class="md-title">Physio Details</h2>
 	      <div flex="" class="flex"></div>
 	    </div>
-	    <div layout="row" layout-align="space-between" >
-	    	<md-input-container>
-	    	  <label>First Name</label>
-		      <input ng-model="physioDetail[0].firstname" type="text" ng-disabled="button" ng-init="button=true">
-		    </md-input-container>
-		    <md-input-container>
-		      <label>Last Name</label>
-		      <input ng-model="physioDetail[0].lastname" type="text" ng-disabled="button" ng-init="button=true">
-		    </md-input-container>
-		    <md-input-container>
-		      <label>Email</label>
-		      <input ng-model="physioDetail[0].email" type="text" ng-disabled="button" ng-init="button=true">
-		    </md-input-container>
-		    <md-input-container style="margin-right: 50px;">
-          <label>Role</label>
-			    <md-select ng-model="physioRole" ng-click="btn=false">
-	          <md-option ng-repeat="physioType in physioTypes" ng-value="physioType" >
-	            {{physioType}}
-	          </md-option>
-	        </md-select>
-	      </md-input-container>
+	    </div>
+	    <div layout="column" layout-align="space-between" style="font-size:15px;">
+	      <div layout="row">
+	      	<md-input-container>
+	      	  <md-icon> perm_identity </md-icon>
+		    	  <label>First Name</label>
+			      <input ng-model="physioDetail[0].firstname" type="text" ng-disabled="button" ng-init="button=true">
+			    </md-input-container>
+			    <md-input-container class="marg">
+			      <md-icon> perm_identity </md-icon>
+			      <label>Last Name</label>
+			      <input ng-model="physioDetail[0].lastname" type="text" ng-disabled="button" ng-init="button=true">
+			    </md-input-container>
+	      </div>
+	      <div layout="row">
+	      	<md-input-container>
+	      	  <md-icon> email </md-icon>
+			      <label>Email</label>
+			      <input ng-model="physioDetail[0].email" type="text" ng-disabled="button" ng-init="button=true">
+			    </md-input-container>
+			    <md-input-container style="margin-right: 50px;" class="marg">
+	          <label>Role</label>
+				    <md-select ng-model="physioRole" ng-click="btn=false">
+		          <md-option ng-repeat="physioType in physioTypes" ng-value="physioType" >
+		            {{physioType}}
+		          </md-option>
+		        </md-select>
+		      </md-input-container>
+	      </div>
 	    </div>
 	    <div layout="row">
 		    <md-button class="md-raised md-primary" ng-disabled="btn" ng-init="btn=true" ng-click="verifyPhysio(physioDetail[0]._id, physioRole); btn=true">
