@@ -4,7 +4,7 @@ angular.module('physiocraft', ['ui.router', 'ngMaterial', 'ngMessages', 'ngAnima
   .config(function($stateProvider, $urlRouterProvider, $mdThemingProvider) {
     var customMap = $mdThemingProvider.extendPalette('light-blue', {
       '50': '5A8DEB',
-      '100': '3E313C',
+      '100': 'EBEEF3',
       '200': '0159A2',
       '500': 'f44336'
     });
