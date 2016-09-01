@@ -12,38 +12,41 @@
 	      <div flex="" class="flex"></div>
 	    </div>
 	    <div layout="column" layout-align="space-between" style="font-size:15px;">
-	      <div layout="row">
-	      	<md-input-container>
-	      	  <md-icon> perm_identity </md-icon>
-		    	  <label>First Name</label>
-			      <input ng-model="physioDetail[0].firstname" type="text" ng-disabled="button" ng-init="button=true">
-			    </md-input-container>
-			    <md-input-container class="marg">
-			      <md-icon> perm_identity </md-icon>
-			      <label>Last Name</label>
-			      <input ng-model="physioDetail[0].lastname" type="text" ng-disabled="button" ng-init="button=true">
-			    </md-input-container>
-	      </div>
-	      <div layout="row">
-	      	<md-input-container>
-	      	  <md-icon> email </md-icon>
-			      <label>Email</label>
-			      <input ng-model="physioDetail[0].email" type="text" ng-disabled="button" ng-init="button=true">
-			    </md-input-container>
-			    <md-input-container style="margin-right: 50px;" class="marg">
-	          <label>Role</label>
-				    <md-select ng-model="physioRole" ng-click="btn=false">
-		          <md-option ng-repeat="physioType in physioTypes" ng-value="physioType" >
-		            {{physioType}}
-		          </md-option>
-		        </md-select>
-		      </md-input-container>
-	      </div>
-	    </div>
-	    <div layout="row">
-		    <md-button class="md-raised md-primary" ng-disabled="btn" ng-init="btn=true" ng-click="verifyPhysio(physioDetail[0]._id, physioRole); btn=true">
-		      <label>Verify</label>
-		    </md-button>
+	      <form name="verify">
+	      	<div layout="row">
+		      	<md-input-container>
+		      	  <md-icon> perm_identity </md-icon>
+			    	  <label>First Name</label>
+				      <input ng-model="physioDetail[0].firstname" type="text" ng-disabled="button" ng-init="button=true">
+				    </md-input-container>
+				    <md-input-container class="marg">
+				      <md-icon> perm_identity </md-icon>
+				      <label>Last Name</label>
+				      <input ng-model="physioDetail[0].lastname" type="text" ng-disabled="button" ng-init="button=true">
+				    </md-input-container>
+		      </div>
+		      <div layout="row">
+		      	<md-input-container>
+		      	  <md-icon> email </md-icon>
+				      <label>Email</label>
+				      <input ng-model="physioDetail[0].email" type="text" ng-disabled="button" ng-init="button=true">
+				    </md-input-container>
+				    <md-input-container style="margin-right: 50px;" class="marg">
+		          <label>Role</label>
+					    <md-select ng-model="physioRole" name="physioRole" required>
+			          <md-option ng-repeat="physioType in physioTypes" ng-value="physioType">
+			            {{physioType}}
+			          </md-option>
+			        </md-select>
+			        <div ng-messages="verify.physioRole.$error">
+			          <div ng-message="required">This is required.</div>
+			        </div>
+			      </md-input-container>
+		      </div>
+			    <md-button class="md-raised md-primary" type="submit" ng-disabled="physioRole === 'None'" ng-click="verifyPhysio(physioDetail[0]._id, physioRole);">
+			      <label>Verify</label>
+			    </md-button>
+	      </form>
 	    </div>
 	  </md-toolbar>
 	</md-card>

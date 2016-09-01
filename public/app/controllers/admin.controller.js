@@ -16,8 +16,8 @@ angular.module("physiocraft")
       });
     }
 
-    $scope.physioRole = ''
-    $scope.physioTypes = ('Associate Admin Finance Marketing E-media Operation').split(' ').map(function (physioType) { return physioType; });
+    $scope.physioRole = 'None';
+    $scope.physioTypes = ('None Associate Admin Finance Marketing E-media Operation').split(' ').map(function (physioType) { return physioType; });
     
     $scope.openPatientDetails = function(patientId){
       $state.go('nav.patientDetails', {patient_id: patientId});
@@ -31,13 +31,15 @@ angular.module("physiocraft")
 
     $scope.getPhysio = function(){
       UserService.getPhysio($stateParams.physio_id).success(function(res){
-        console.log(res);
         $scope.physioDetail = res;
       });
     };
 
     $scope.assumeRole = function(id, physioRole) {
-      switch (physioRole){ 
+      switch (physioRole){
+        case 'None':
+          console.log("Choose option");
+          break; 
         case 'Associate':
           UserService.makeAssociate(id).success(function(data){
             $state.go('nav.physios')
