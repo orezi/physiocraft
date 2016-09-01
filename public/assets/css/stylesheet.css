@@ -12,6 +12,7 @@ html {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  padding-bottom: 120px;
 }
 .title{
 	margin-top: 50px;
