@@ -55,6 +55,14 @@ angular.module("physiocraft")
       document.body.scrollTop = document.documentElement.scrollTop = 0;
     };
 
+    $scope.openPatientDetails = function(){
+      var id = $stateParams.patient_id;
+      $state.go('nav.patientDetails', {
+        patient_id: id
+      });
+      document.body.scrollTop = document.documentElement.scrollTop = 0;
+    };
+
     $scope.deleteTreatment = function(id){
       PatientService.deleteTreatment(id).success(function(data){
         $scope.getPatientTreatments();

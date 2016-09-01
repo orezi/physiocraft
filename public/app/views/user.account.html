@@ -1,4 +1,4 @@
-<div ng-controller="homeCtrl" data-ng-init="getUserDetails()">
+<div ng-controller="homeCtrl" data-ng-init="getUserDetails()" class="main-content">
 	<md-card>
 	  <md-toolbar class="md-table-toolbar md-default" style="margin-left: 20px;">
 	    <div class="md-toolbar-tools patient-title">
@@ -21,10 +21,6 @@
 			    </md-input-container>
 	      </div>
 	      <div layout="row">
-	      	<md-input-container>
-			      <label>Password</label>
-			      <input ng-model="user.password" type="text" ng-disabled="button" ng-init="button=true">
-			    </md-input-container>
 			    <md-input-container layout="row">
 			      <label>Admin</label>
 			      <input ng-model="user.admin" type="text" disabled>
@@ -33,12 +29,12 @@
 			      <label>Verified</label>
 			      <input ng-model="user.verified" type="text" disabled>
 			    </md-input-container>
-	      </div>
-	      <div layout="row">
-	      	<md-input-container>
+			    <md-input-container>
 			      <label>Associate</label>
 			      <input ng-model="user.associate" type="text" disabled>
 			    </md-input-container>
+	      </div>
+	      <div layout="row">
 			    <md-input-container>
 			      <label>E-media</label>
 			      <input ng-model="user.e_media" type="text" disabled>

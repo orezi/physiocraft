@@ -1,4 +1,4 @@
-<div ng-controller="patientCtrl">
+<div ng-controller="patientCtrl" class="main-content">
 	<md-card>
 	  <md-toolbar class="md-table-toolbar md-default ptdetails">
 	    <div layout="row">
@@ -11,60 +11,77 @@
 		    <h2 class="md-title">New patient details</h2>
 	    </div>
       <div flex="" class="flex"></div>
-      <div layout="row">
-      	<md-input-container>
-      	  <md-icon> perm_identity </md-icon>
-		      <label>First name</label>
-		      <input ng-model="newpatient.firstname" type="text">
-			  </md-input-container>
-			  <md-input-container class="marg">
-			    <md-icon> perm_identity </md-icon>
-			    <label>Last name</label>
-			    <input ng-model="newpatient.lastname" type="text">
-			  </md-input-container>
-			  <md-input-container class="marg">
-			    <md-icon> mail_outline </md-icon>
-			    <label>Email</label>
-			    <input ng-model="newpatient.email" type="text">
-			  </md-input-container>
-      </div>
-      <div layout="row">
-      	<md-input-container>
-      	  <md-icon> location_on </md-icon>
-			    <label>Address</label>
-			    <input ng-model="newpatient.address" type="text">
-			  </md-input-container>
-			  <md-input-container class="marg">
-			    <md-icon> av_timer </md-icon>
-			    <label>Age</label>
-			    <input ng-model="newpatient.age" type="text">
-			  </md-input-container>
-			  <md-input-container class="marg">
-			    <md-icon> phone </md-icon>
-			    <label>Phone Number</label>
-			    <input ng-model="newpatient.phoneNumber" type="text">
-			  </md-input-container>
-      </div>
-      <div layout="row">
-      	<md-input-container>
-      	  <md-icon> wc </md-icon>
-			    <label>Gender</label>
-			    <input ng-model="newpatient.gender" type="text">
-			  </md-input-container>
-			  <md-input-container class="marg">
-			    <md-icon> speaker_notes </md-icon>
-			    <label>Referral source</label>
-			    <input ng-model="newpatient.referralSource" type="text">
-			  </md-input-container>
-			  <md-input-container class="marg">
-			    <md-icon> receipt </md-icon>
-			    <label>Bill per session</label>
-			    <input ng-model="newpatient.billPerSession" type="text" number>
-			  </md-input-container>
-      </div>
-		  <md-button class="subtn md-raised md-primary" ng-click="createPatient(newpatient)">
-		  <label>Submit</label>
-		  </md-button>
+      <form name="addPatient">
+	      <div layout="row">
+	      	<md-input-container>
+	      	  <md-icon> perm_identity </md-icon>
+			      <label>First name</label>
+			      <input ng-model="newpatient.firstname" name="firstname" type="text" required>
+			      <div ng-messages="addPatient.firstname.$error">
+		          <div ng-message="required">This is required.</div>
+		        </div>
+				  </md-input-container>
+				  <md-input-container class="marg">
+				    <md-icon> perm_identity </md-icon>
+				    <label>Last name</label>
+				    <input ng-model="newpatient.lastname" name="lastname" type="text" required>
+				    <div ng-messages="addPatient.lastname.$error">
+		          <div ng-message="required">This is required.</div>
+		        </div>
+				  </md-input-container>
+				  <md-input-container class="marg">
+				    <md-icon> mail_outline </md-icon>
+				    <label>Email</label>
+				    <input ng-model="newpatient.email" name="email" type="text" required>
+				    <div ng-messages="addPatient.email.$error">
+		          <div ng-message="required">This is required.</div>
+		        </div>
+				  </md-input-container>
+	      </div>
+	      <div layout="row">
+				  <md-input-container>
+				    <md-icon> av_timer </md-icon>
+				    <label>Age</label>
+				    <input ng-model="newpatient.age" name="age" type="text" required>
+				    <div ng-messages="addPatient.age.$error">
+		          <div ng-message="required">This is required.</div>
+		        </div>
+				  </md-input-container>
+				  <md-input-container class="marg">
+	      	  <md-icon> wc </md-icon>
+				    <label>Gender</label>
+				    <input ng-model="newpatient.gender" name="gender" type="text" required>
+				    <div ng-messages="addPatient.gender.$error">
+		          <div ng-message="required">This is required.</div>
+		        </div>
+				  </md-input-container>
+				  <md-input-container class="marg">
+	      	  <md-icon> location_on </md-icon>
+				    <label>Address</label>
+				    <input ng-model="newpatient.address" name="address" type="text">
+				  </md-input-container>
+	      </div>
+	      <div layout="row">
+	      	<md-input-container>
+				    <md-icon> phone </md-icon>
+				    <label>Phone Number</label>
+				    <input ng-model="newpatient.phoneNumber" type="text">
+				  </md-input-container>
+				  <md-input-container class="marg">
+				    <md-icon> speaker_notes </md-icon>
+				    <label>Referral source</label>
+				    <input ng-model="newpatient.referralSource" type="text">
+				  </md-input-container>
+				  <md-input-container class="marg">
+				    <md-icon> receipt </md-icon>
+				    <label>Bill per session</label>
+				    <input ng-model="newpatient.billPerSession" type="number">
+				  </md-input-container>
+	      </div>
+	      <md-button class="subtn md-raised md-primary" type="submit" ng-click="createPatient(newpatient)">
+			    <label>Submit</label>
+			  </md-button>
+	    </form>
 	  </md-toolbar>
 	</md-card>
 </div>

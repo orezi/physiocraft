@@ -1,28 +1,47 @@
-<div ng-controller="patientCtrl" data-ng-init="getPatient()">
+<div ng-controller="patientCtrl" data-ng-init="getPatient()" class="main-content">
 	<md-card>
 	  <md-toolbar class="md-table-toolbar md-default">
-	    <h2 class="md-title" style="margin-left: 10px;">New Treatment for {{patient[0].firstname}} {{patient[0].lastname}}</h2>
+	    <div layout="row">
+	    	<md-button class="md-icon-button" aria-label="More" ng-click="openPatientDetails()">
+	        <img src="https://maxcdn.icons8.com/Android_L/PNG/24/Arrows/left-24.png" title="Left" width="24" style="margin-top:10px;">
+	        <md-tooltip>
+	          Back
+	        </md-tooltip>
+	      </md-button>
+		    <h2 class="md-title" style="margin-left: 10px;">New Treatment for {{patient[0].firstname}} {{patient[0].lastname}}</h2>
+	    </div>
       <div flex="" class="flex"></div>
-      <div class="ptdetails">
-      	<md-input-container>
-      	  <md-icon> history </md-icon>
-		      <label>Patient History</label>
-		      <input ng-model="newtreatment.history" type="text">
-			  </md-input-container>
-			  <md-input-container class="marg">
-			    <md-icon> details </md-icon>
-			    <label>Treatment Details</label>
-			    <input ng-model="newtreatment.treatmentDetails" type="text">
-			  </md-input-container>
-			  <md-input-container>
-			    <md-icon> alarm </md-icon>
-			    <label>Duration of treatment session</label>
-			    <input ng-model="newtreatment.duration" type="text">
-			  </md-input-container>
-      </div>
-		  <md-button class="subtn md-raised md-primary" ng-click="createTreatment(newtreatment)">
-		    <label>Submit</label>
-		  </md-button>
+      <form name="addTreatment">
+        <div class="ptdetails">
+        	<md-input-container>
+	      	  <md-icon> history </md-icon>
+			      <label>Patient History</label>
+			      <input ng-model="newtreatment.history" name="history" type="text" required>
+			      <div ng-messages="addTreatment.history.$error">
+		          <div ng-message="required">This is required.</div>
+		        </div>
+				  </md-input-container>
+				  <md-input-container class="marg">
+				    <md-icon> details </md-icon>
+				    <label>Treatment Details</label>
+				    <input ng-model="newtreatment.treatmentDetails" name="treatmentDetails" type="text" required>
+				    <div ng-messages="addTreatment.treatmentDetails.$error">
+		          <div ng-message="required">This is required.</div>
+		        </div>
+				  </md-input-container>
+				  <md-input-container>
+				    <md-icon> alarm </md-icon>
+				    <label>Duration of treatment session</label>
+				    <input ng-model="newtreatment.duration" name="duration" type="text" required>
+				    <div ng-messages="addTreatment.duration.$error">
+		          <div ng-message="required">This is required.</div>
+		        </div>
+				  </md-input-container>
+        </div>
+        <md-button class="subtn md-raised md-primary" type="submit" ng-click="createTreatment(newtreatment)">
+			    <label>Submit</label>
+			  </md-button>
+      </form>
 	  </md-toolbar>
 	  
 	</md-card>

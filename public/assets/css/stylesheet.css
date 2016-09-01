@@ -145,3 +145,8 @@ label{
 .marg{
 	margin-left: 40px;
 }
+.main-content{
+  position: absolute;
+  width: 90%;
+  margin-left: 40px;
+}

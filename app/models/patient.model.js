@@ -26,7 +26,8 @@ var patientSchema = new Schema({
     required: true
   },
   gender: {
-    type: String
+    type: String,
+    required: true
   },
   address: {
     type: String
