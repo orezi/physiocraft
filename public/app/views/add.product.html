@@ -1,0 +1,67 @@
+<div ng-controller="productCtrl" class="main-content">
+	<md-card>
+	  <md-toolbar class="md-table-toolbar md-default ptdetails">
+	    <div layout="row">
+	    	<md-button class="md-icon-button" aria-label="More" ui-sref="nav.products">
+	        <img src="https://maxcdn.icons8.com/Android_L/PNG/24/Arrows/left-24.png" title="Left" width="24" style="margin-top:10px;">
+	        <md-tooltip>
+	          Back
+	        </md-tooltip>
+	      </md-button>
+		    <h2 class="md-title">New product details</h2>
+	    </div>
+      <div flex="" class="flex"></div>
+      <form name="addProduct">
+	      <div layout="row">
+	      	<md-input-container>
+	      	  <md-icon> perm_identity </md-icon>
+			      <label>Product name</label>
+			      <input ng-model="newProduct.productName" name="productName" type="text" required>
+			      <div ng-messages="addProduct.productName.$error">
+		          <div ng-message="required">This is required.</div>
+		        </div>
+				  </md-input-container>
+				  <md-input-container class="marg">
+				    <md-icon> perm_identity </md-icon>
+				    <label>Product description</label>
+				    <input ng-model="newProduct.productDescription" name="productDescription" type="text" required>
+				    <div ng-messages="addProduct.productDescription.$error">
+		          <div ng-message="required">This is required.</div>
+		        </div>
+				  </md-input-container>
+				  <md-input-container class="marg">
+				    <md-icon> mail_outline </md-icon>
+				    <label>Contact name</label>
+				    <input ng-model="newProduct.contactName" name="contactName" type="text" required>
+				    <div ng-messages="addProduct.contactName.$error">
+		          <div ng-message="required">This is required.</div>
+		        </div>
+				  </md-input-container>
+	      </div>
+	      <div layout="row">
+				  <md-input-container>
+				    <md-icon> av_timer </md-icon>
+				    <label>Contact number 1</label>
+				    <input ng-model="newProduct.contactNumber1" name="contactNumber1" type="number" required>
+				    <div ng-messages="addProduct.contactNumber1.$error">
+		          <div ng-message="required">This is required.</div>
+		        </div>
+				  </md-input-container>
+				  <md-input-container class="marg">
+	      	  <md-icon> wc </md-icon>
+				    <label>Contact number 2</label>
+				    <input ng-model="newProduct.contactNumber2" name="contactNumber2" type="number">
+				  </md-input-container>
+				  <md-input-container class="marg">
+	      	  <md-icon> location_on </md-icon>
+				    <label>Contact number 3</label>
+				    <input ng-model="newProduct.contactNumber3" name="contactNumber3" type="number">
+				  </md-input-container>
+	      </div>
+	      <md-button class="subtn md-raised md-primary" type="submit" ng-click="createProduct(newProduct)">
+			    <label>Submit</label>
+			  </md-button>
+	    </form>
+	  </md-toolbar>
+	</md-card>
+</div>

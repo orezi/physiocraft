@@ -11,6 +11,12 @@ module.exports = function(app) {
   router.route('/products')
     .get(user.verifyToken, product.getProducts)
     .post(user.verifyToken, product.addProduct)
+    .delete(user.verifyToken, product.deleteAll);
+
+  router.route('/product/:product_id')
+    .get(user.verifyToken, product.getProduct)
+    .put(user.verifyToken, product.updateProduct)
+    .delete(user.verifyToken, product.deleteProduct);
 
   app.use('/api', router);
   // frontend routes =========================================================

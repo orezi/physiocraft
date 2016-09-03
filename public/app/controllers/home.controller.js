@@ -31,10 +31,7 @@ angular.module("physiocraft")
             $scope.progressLoad = false;
             $scope.isLoggedIn = true;
             $scope.userInformation = res.data.user;
-            if($scope.userInformation.admin == true){
-              $location.url('/nav/patients');  
-            }
-            else{ console.log($scope.userInformation);}
+            $location.url('/nav/patients');
           }
         }
       });

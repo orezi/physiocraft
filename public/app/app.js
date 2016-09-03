@@ -75,6 +75,21 @@ angular.module('physiocraft', ['ui.router', 'ngMaterial', 'ngMessages', 'ngAnima
         templateUrl: 'app/views/patient.details.html',
         controller: 'patientCtrl'
       })
+      .state('nav.products', {
+        url: '/products',
+        templateUrl: 'app/views/products.html',
+        controller: 'productCtrl'
+      })
+      .state('nav.addProduct', {
+        url: '/newProduct',
+        templateUrl: 'app/views/add.product.html',
+        controller: 'productCtrl'
+      })
+      .state('nav.productDetails', {
+        url: '/product/:product_id',
+        templateUrl: 'app/views/product.details.html',
+        controller: 'productCtrl'
+      })
       .state('nav', {
         url: '/nav',
         templateUrl: 'app/views/nav.html',

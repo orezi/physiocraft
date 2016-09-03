@@ -1,0 +1,61 @@
+<md-card class="card main-content" ng-controller="productCtrl" data-ng-init="getAllPatients()">
+  <md-toolbar class="md-table-toolbar md-default">
+    <div class="md-toolbar-tools">
+      <h2 class="md-title">Manage Products</h2>
+      <div flex="" class="flex"></div>
+      <div class="md-title search-bar">
+        <md-input-container md-no-float class="md-block">
+          <input ng-model="find" placeholder="search">
+        </md-input-container>
+      </div> 
+      <div ui-sref="nav.addProduct">
+        <md-button class="md-fab md-mini md-hue-3">
+          <img class="icon icons8-Plus-Math add-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAvUlEQVRoQ+2XwQqFMBAD3f//6D68ibxDGBooMp6362aSVjvXR575iI5LIac5qSM6UiJgtEpgcduqI2ut9ZxsZmrvqzW+BSgEBExHEmhGK6H0qjFaCTSjlVAyWoCS0QLQPLUSaMdF6z1QImJnTfLXHEVLIZts0ZFNIL1YEZDRZieNvepCajqSgDvuy54M/a9GIYCceySBZrQSSt7ZASWjBaBVTy0wD16iEIyutFBHSmBxWx3B6EoLdaQEFrf9AZUqgDNAFE7oAAAAAElFTkSuQmCC" width="26">
+          <md-tooltip>
+            Add Product
+          </md-tooltip>
+        </md-button>
+      </div>
+    </div>
+    <div ng-if="!products.length" class="md-toolbar-tools">
+      <md-button ui-sref="nav.addProduct">There are no products yet. Click here to add your first product!</md-button>
+    </div>
+    <md-table-container ng-if="products.length">
+      <table md-table md-row-select ng-model="selected">
+        <thead md-head md-order="query.order">
+          <th md-column>Product name</th>
+          <th md-column>Description</th>
+          <th md-column>Contact name</th>
+          <th md-column>Contact number 1</th>
+          <th md-column>Contact number 2</th>
+          <th md-column>Contact number 3</th>
+
+        </thead>
+        <tbody md-body>
+          <tr md-row ng-repeat="product in filtered=(products | filter: find)">
+            <td md-cell>{{product.productName}}</td>
+            <td md-cell>{{product.productDescription}}</td>
+            <td md-cell>{{product.contactName}}</td>
+            <td md-cell>{{product.contactNumber1}}</td>
+            <td md-cell>{{product.contactNumber2}}</td>
+            <td md-cell>{{product.contactNumber3}}</td>
+            <td md-cell layout="row">
+              <md-button class="md-icon-button" aria-label="More" ng-click="openProductDetailsView(product._id)">
+                <md-icon> more_vert </md-icon>
+                <md-tooltip>
+                  More
+                </md-tooltip>
+              </md-button>
+              <md-button class="md-icon-button" aria-label="More" ng-click="showConfirm($event, product._id)">
+                <md-icon> delete </md-icon>
+                <md-tooltip>
+                  Delete
+                </md-tooltip>
+              </md-button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </md-table-container>
+  </md-toolbar>
+</md-card>
