@@ -90,6 +90,21 @@ angular.module('physiocraft', ['ui.router', 'ngMaterial', 'ngMessages', 'ngAnima
         templateUrl: 'app/views/product.details.html',
         controller: 'productCtrl'
       })
+      .state('nav.sources', {
+        url: '/sources',
+        templateUrl: 'app/views/sources.html',
+        controller: 'sourceCtrl'
+      })
+      .state('nav.addSource', {
+        url: '/newSource',
+        templateUrl: 'app/views/add.source.html',
+        controller: 'sourceCtrl'
+      })
+      .state('nav.sourceDetails', {
+        url: '/source/:source_id',
+        templateUrl: 'app/views/source.details.html',
+        controller: 'sourceCtrl'
+      })
       .state('nav', {
         url: '/nav',
         templateUrl: 'app/views/nav.html',

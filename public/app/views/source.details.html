@@ -1,0 +1,47 @@
+<div ng-controller="sourceCtrl" data-ng-init="getSource()" class="main-content">
+	<md-card>
+	  <md-toolbar class="md-table-toolbar md-default" style="margin-left: 20px;">
+	    <div layout="row">
+	    	<md-button class="md-icon-button" aria-label="More" ui-sref="nav.sources">
+	        <img src="https://maxcdn.icons8.com/Android_L/PNG/24/Arrows/left-24.png" title="Left" width="24" style="margin-top:10px;">
+	        <md-tooltip>
+	          Back
+	        </md-tooltip>
+	      </md-button>
+		    <h2 class="md-title md-toolbar-tools patient-title">Source Details</h2>
+	    </div>
+	    <div layout="row" style="font-size:15px;">
+	    	<md-input-container>
+	    	  <md-icon> perm_identity </md-icon>
+	    	  <label>Source name</label>
+		      <input ng-model="source[0].sourceName" type="text" ng-disabled="button" ng-init="button=true">
+		    </md-input-container>
+		    <md-input-container>
+		      <md-icon> description </md-icon>
+		      <label>Source description</label>
+		      <textarea ng-model="source[0].sourceDescription" md-maxlength="150" rows="5" md-select-on-focus ng-disabled="button" ng-init="button=true"></textarea>
+		    </md-input-container>
+	    </div>
+	    <div layout="row" style="font-size:15px;">
+	      <md-input-container>
+		      <md-icon> phone </md-icon>
+		      <label>Source number 1</label>
+		      <input ng-model="source[0].sourceNumber1" type="text" ng-disabled="button" ng-init="button=true">
+		    </md-input-container>
+		    <md-input-container layout="row">
+		      <md-icon> phone </md-icon>
+		      <label>Source number 2</label>
+		      <input ng-model="source[0].sourceNumber2" type="number" ng-disabled="button" ng-init="button=true">
+		    </md-input-container>
+	    </div>
+	    <div layout="row">
+	    	<md-button class="md-raised" ng-click="button=false">
+		      <label>Edit details</label>
+		    </md-button>
+		    <md-button class="md-raised md-primary" ng-disabled="button" ng-init="button=true" ng-click="updateSourceDetails(source[0]._id, source[0]); button=true">
+		      <label>Update details</label>
+		    </md-button>
+	    </div>
+	  </md-toolbar>
+	</md-card>
+</div>
