@@ -35,6 +35,20 @@ angular.module("physiocraft")
       });
     };
 
+    $scope.patientActive = function(){
+      document.getElementById("pat").className += " active";
+      document.getElementById("phy").className.replace(/active/g , '' );
+      document.getElementById("pro").className.replace( /(?:^|\s)active(?!\S)/g , '' )
+      document.getElementById("sour").className.replace( /(?:^|\s)active(?!\S)/g , '' )
+    }
+
+    $scope.physioActive = function(){
+      document.getElementById("pat").className.replace( /active/g , '' );
+      document.getElementById("phy").className += " active";
+      document.getElementById("pro").className.replace( /(?:^|\s)active(?!\S)/g , '' )
+      document.getElementById("sour").className.replace( /(?:^|\s)active(?!\S)/g , '' )
+    }
+
     $scope.assumeRole = function(id, physioRole) {
       switch (physioRole){
         case 'None':

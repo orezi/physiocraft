@@ -105,6 +105,21 @@ angular.module('physiocraft', ['ui.router', 'ngMaterial', 'ngMessages', 'ngAnima
         templateUrl: 'app/views/source.details.html',
         controller: 'sourceCtrl'
       })
+      .state('nav.medias', {
+        url: '/medias',
+        templateUrl: 'app/views/medias.html',
+        controller: 'mediaCtrl'
+      })
+      .state('nav.addMedia', {
+        url: '/newMedia',
+        templateUrl: 'app/views/add.media.html',
+        controller: 'mediaCtrl'
+      })
+      .state('nav.mediaDetails', {
+        url: '/media/:media_id',
+        templateUrl: 'app/views/media.details.html',
+        controller: 'mediaCtrl'
+      })
       .state('nav', {
         url: '/nav',
         templateUrl: 'app/views/nav.html',
