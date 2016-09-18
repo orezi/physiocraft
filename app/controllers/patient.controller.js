@@ -4,10 +4,7 @@ require('../models/patient.model');
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var Patient = mongoose.model('Patient');
-var jwt = require('jsonwebtoken');
 var config = require('../../config/db');
-var session = ('express-session');
-var nodemailer = require('nodemailer');
 
 var PatientController = function() {}
 

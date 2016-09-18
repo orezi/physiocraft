@@ -4,10 +4,7 @@ require('../models/media.model');
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var Media = mongoose.model('Media');
-var jwt = require('jsonwebtoken');
 var config = require('../../config/db');
-var session = ('express-session');
-var nodemailer = require('nodemailer');
 
 var MeidaController = function() {}
 
