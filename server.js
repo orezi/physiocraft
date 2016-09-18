@@ -20,6 +20,7 @@ var port = process.env.PORT || 8080;
 // (uncomment after you enter in your own credentials in config/db.js)
 mongoose.connect(db.database);
 //the eway we eork is fiodjk, gettg a merge conflick from here
+//tojdof jmoidsj moldjm folj
 
 //another mistake in test branch
 
