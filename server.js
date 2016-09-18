@@ -17,12 +17,7 @@ var db = require('./config/db');
 var port = process.env.PORT || 8080; 
 
 // connect to our mongoDB database 
-// (uncomment after you enter in your own credentials in config/db.js)
 mongoose.connect(db.database);
-//the eway we eork is fiodjk, gettg a merge conflick from heressssssssss
-//tojdof jmoidsj moldjm folj
-
-//another mistake in test branch
 
 // get all data/stuff of the body (POST) parameters
 
