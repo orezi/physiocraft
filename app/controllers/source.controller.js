@@ -4,10 +4,7 @@ require('../models/source.model');
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var Source = mongoose.model('Source');
-var jwt = require('jsonwebtoken');
 var config = require('../../config/db');
-var session = ('express-session');
-var nodemailer = require('nodemailer');
 
 var SourceController = function() {}
 
