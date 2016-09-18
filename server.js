@@ -16,8 +16,8 @@ var db = require('./config/db');
 // set our port
 var port = process.env.PORT || 8080; 
 
-// connect to our mongoDB database 
-// (uncomment after you enter in your own credentials in config/db.js)
+// connect to our mongoDB database sdlkjfj lj dljm
+// (uncomment after you enter in your own credentials in config/db.js)d lkjdm fj
 mongoose.connect(db.database);
 //the eway we eork is fiodjk, gettg a merge conflick from heressssssssss
 //tojdof jmoidsj moldjm folj
