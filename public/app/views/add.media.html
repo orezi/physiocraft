@@ -1,0 +1,50 @@
+<div ng-controller="mediaCtrl" class="main-content">
+	<md-card>
+	  <md-toolbar class="md-table-toolbar md-default ptdetails">
+	    <div layout="row">
+	    	<md-button class="md-icon-button" aria-label="More" ui-sref="nav.medias">
+	        <img src="https://maxcdn.icons8.com/Android_L/PNG/24/Arrows/left-24.png" title="Left" width="24" style="margin-top:10px;">
+	        <md-tooltip>
+	          Back
+	        </md-tooltip>
+	      </md-button>
+		    <h2 class="md-title">New media details</h2>
+	    </div>
+      <div flex="" class="flex"></div>
+      <form name="addMedia">
+	      <div layout="row">
+	      	<md-input-container>
+	      	  <md-icon> perm_identity </md-icon>
+			      <label>Media name</label>
+			      <input ng-model="newMedia.mediaName" name="mediaName" type="text" required>
+			      <div ng-messages="addMedia.mediaName.$error">
+		          <div ng-message="required">This is required.</div>
+		        </div>
+				  </md-input-container>
+				  <md-input-container class="marg">
+				    <md-icon> description </md-icon>
+				    <label>Media content</label>
+				    <input ng-model="newMedia.content" name="content" type="text" required>
+				    <div ng-messages="addMedia.content.$error">
+		          <div ng-message="required">This is required.</div>
+		        </div>
+				  </md-input-container>
+				  <md-input-container style="margin-right: 50px;" class="marg">
+		          <label>Type</label>
+					    <md-select ng-model="mediaRole" name="mediaRole" required>
+			          <md-option ng-repeat="mediaType in mediaTypes" ng-value="mediaType">
+			            {{mediaType}}
+			          </md-option>
+			        </md-select>
+			        <div ng-messages="addMedia.mediaType.$error"">
+			          <div ng-message="required">This is required.</div>
+			        </div>
+			      </md-input-container>
+	      </div>
+	      <md-button class="subtn md-raised md-primary" type="submit" ng-click="createMedia(newMedia)">
+			    <label>Submit</label>
+			  </md-button>
+	    </form>
+	  </md-toolbar>
+	</md-card>
+</div>

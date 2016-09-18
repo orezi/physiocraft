@@ -18,7 +18,10 @@ angular.module("physiocraft")
       MediaService.getMedia($stateParams.media_id).success(function(res) {
         $scope.media = res;
       });
-    }
+    };
+
+    $scope.mediaRole = 'None';
+    $scope.mediaTypes = ('None Article Feature Link Mentions Others').split(' ').map(function (mediaType) { return mediaType; });
 
     $scope.createMedia = function(newMedia){
       MediaService.createMedia(newMedia).success(function(data){

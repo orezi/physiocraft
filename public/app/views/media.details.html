@@ -1,0 +1,40 @@
+<div ng-controller="mediaCtrl" data-ng-init="getMedia()" class="main-content">
+	<md-card>
+	  <md-toolbar class="md-table-toolbar md-default" style="margin-left: 20px;">
+	    <div layout="row">
+	    	<md-button class="md-icon-button" aria-label="More" ui-sref="nav.medias">
+	        <img src="https://maxcdn.icons8.com/Android_L/PNG/24/Arrows/left-24.png" title="Left" width="24" style="margin-top:10px;">
+	        <md-tooltip>
+	          Back
+	        </md-tooltip>
+	      </md-button>
+		    <h2 class="md-title md-toolbar-tools patient-title">Media Details</h2>
+	    </div>
+	    <div layout="row" style="font-size:15px;">
+	    	<md-input-container>
+	    	  <md-icon> perm_identity </md-icon>
+	    	  <label>Media name</label>
+		      <input ng-model="media[0].mediaName" type="text" ng-disabled="button" ng-init="button=true">
+		    </md-input-container>
+		    <md-input-container>
+		      <md-icon> description </md-icon>
+		      <label>Media content</label>
+		      <input ng-model="media[0].content" type="text" ng-disabled="button" ng-init="button=true">
+		    </md-input-container>
+		    <md-input-container>
+		      <md-icon> perm_identity </md-icon>
+		      <label>Contact name</label>
+		      <input ng-model="media[0].contactName" type="text" ng-disabled="button" ng-init="button=true">
+		    </md-input-container>
+	    </div>
+	    <div layout="row">
+	    	<md-button class="md-raised" ng-click="button=false">
+		      <label>Edit details</label>
+		    </md-button>
+		    <md-button class="md-raised md-primary" ng-disabled="button" ng-init="button=true" ng-click="updateMediaDetails(media[0]._id, media[0]); button=true">
+		      <label>Update details</label>
+		    </md-button>
+	    </div>
+	  </md-toolbar>
+	</md-card>
+</div>
