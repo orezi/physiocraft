@@ -23,7 +23,6 @@ UserController.prototype.getUsers = function(req, res) {
     return res.json(users);
   });
 };
-
 UserController.prototype.getVerifiedUsers = function(req, res) {
   User.find({
     verified: true
@@ -214,24 +213,6 @@ UserController.prototype.updateUser = function(req, res) {
     });
   });
 }
-
-UserController.prototype.getUserFromToken = function(req, res, next) {
-  var token = req.body.token || req.query.token || req.headers['x-access-token'];
-
-  if (token) {
-    jwt.verify(token, config.secret, function(err, decoded) {
-      if (err) {
-        next();
-      } else {
-        //if all checks are passed, save decoded info to request
-        req.user = decoded;
-        next();
-      }
-    });
-  } else {
-    next();
-  }
-};
 
 UserController.prototype.decodeUser = function(req, res) {
   return res.json(req.decoded);
