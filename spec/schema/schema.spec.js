@@ -5,7 +5,7 @@ var User = mongoose.model("User");
 
 
 describe("User Model", function(done) {
-  afterEach(function(done) {
+  beforeEach(function(done) {
     User.remove({}, function(err) {
       done();
     })

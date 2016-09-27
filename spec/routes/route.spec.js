@@ -6,7 +6,6 @@ require('../../app/models/user.model');
 var User = mongoose.model('User');
 
 describe("User", function() {
-
   beforeEach(function(done) {
     var user = new User({
       firstname: 'john',
@@ -29,8 +28,7 @@ describe("User", function() {
   });
 
   describe("Routes", function() {
-
-    it('should create a new user', function(done) {
+    it("should create a new user", function(done) {
       request(app)
         .post('/api/users')
         .set('Content-Type', 'application/json')
@@ -48,10 +46,9 @@ describe("User", function() {
           expect(response.body.lastname).toBe('mason');
           done();
         });
-
     });
 
-    it('should get all users', function(done) {
+    it("should get all users", function(done) {
       request(app)
         .get('/api/users')
         .set('Content-Type', 'application/json')
@@ -61,12 +58,12 @@ describe("User", function() {
         });
     });
 
-    it('should log a user in', function(done) {
+    it("should log a user in", function(done) {
       request(app)
         .post('/api/authenticate')
         .set('Content-Type', 'application/json')
         .send({
-          username: 'john',
+          email: 'john@gmail.com',
           password: '1234567'
         })
         .end(function(err, res) {
@@ -78,12 +75,12 @@ describe("User", function() {
         });
     });
 
-    it('should get a specific physio', function(done) {
+    it("should get a specific physio", function(done) {
       request(app)
         .post('/api/authenticate')
         .set('Content-Type', 'application/json')
         .send({
-          username: 'john',
+          email: 'john@gmail.com',
           password: '1234567'
         })
         .end(function(err, res) {
@@ -94,22 +91,22 @@ describe("User", function() {
           var userId = res.body.user._id;
           var userToken = res.body.token;
           request(app)
-            .get('/api/physio/' + userId)
+            .get('/api/physio/' + userId + '?token=' + userToken)
             .set('Content-Type', 'application/json')
             .end(function(err, res) {
               expect(res.body.length).toEqual(1);
-              expect(res.body[0].firstname).toBe('jason');
+              expect(res.body[0].firstname).toBe('john');
               done();
             });
         });
     });
     //login before deleting a user
-    it('should delete a specific physio', function(done) {
+    it("should delete a specific physio", function(done) {
       request(app)
         .post('/api/authenticate')
         .set('Content-Type', 'application/json')
         .send({
-          username: 'john',
+          email: 'john@gmail.com',
           password: '1234567'
         })
         .end(function(err, res) {
@@ -126,7 +123,7 @@ describe("User", function() {
             .end(function(err, res) {
               expect(res.body).toEqual(jasmine.objectContaining({
                 success: true,
-                message: 'user has been deleted'
+                message: 'physio has been deleted'
               }));
               done();
             });
