@@ -4,10 +4,7 @@ require('../models/product.model');
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var Product = mongoose.model('Product');
-var jwt = require('jsonwebtoken');
 var config = require('../../config/db');
-var session = ('express-session');
-var nodemailer = require('nodemailer');
 
 var ProductController = function() {}
 
